@@ -1,4 +1,4 @@
-#Gantt
+# Gantt
  gantt
         title Gantt Diagram
         dateFormat DD-MM-YYYY
