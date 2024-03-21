@@ -1,4 +1,10 @@
-# Gantt
+# Rocket food
+
+## App Description
+
+## Gantt
+
+```mermaid
  gantt
         title Gantt Diagram
         dateFormat DD-MM-YYYY
@@ -30,8 +36,11 @@
         section Soutenance
         Préparation du Powerpoint : 11-04-2024, 1d
         Soutenance : crit, 12-04-2024, 1d
+```
 
-# GitFlow
+## GitFlow
+
+```mermaid
   %%{init: { 'gitGraph':{'mainBranchName': 'release'},'livreurLevel': 'debug', 'theme': 'default', 'themeVariables': {
               'tagLabelColor': '#ff0000',
               'tagLabelBackground': '#00ff00',
@@ -74,4 +83,5 @@ gitGraph
         merge client id:"Create favori "
         merge livreur id:"Delete json stringlify "
         checkout release
-        merge develop id:"v.0.2.dev"      
+        merge develop id:"v.0.2.dev"
+```  
