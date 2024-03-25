@@ -1,0 +1,25 @@
+#buttonStyle {
+    height: 50px;
+    background-color: var(--color-primary);
+    border-radius: 50px;
+    border: 2px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttonStyle:hover {
+    background-color: var(--color-white);
+    border: 2px solid var(--color-primary);
+}
+
+
+#buttonStyle p {
+    color: var(--color-white);
+    padding: 0 50px;
+    font-size: 18px;
+}
+
+#buttonStyle:hover p {
+    color: var(--color-primary);
+}
