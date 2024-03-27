@@ -1,15 +1,22 @@
 import React from 'react';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import './Home.css';
 
 function Home() {
     return (
-        <div>
-            <div className="Home">
-                <header className="Home-header">
-                    <Header/>
-                </header>
-            </div>
+        <div className="Home">
+            <header className="Home-header">
+                <Header />
+            </header>
+            <body>
+                <p>
+                    Test
+                </p>
+            </body>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 }
