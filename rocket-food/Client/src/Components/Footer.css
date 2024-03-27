@@ -1,0 +1,12 @@
+footer div {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    background-color: var(--color-light);
+    width: 100%;
+}
+
+#footerMenu
+{
+    display: block;
+    background-color: var(--color-light);
+}
