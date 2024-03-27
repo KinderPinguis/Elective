@@ -9,11 +9,7 @@ function Home() {
             <header className="Home-header">
                 <Header />
             </header>
-            <body>
-                <p>
-                    Test
-                </p>
-            </body>
+
             <footer>
                 <Footer />
             </footer>
