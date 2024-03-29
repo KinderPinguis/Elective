@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '../Components/Header';
-import './Home.css';
 
-function Home() {
+function Privacy() {
     return (
         <header>
             <Header/>
@@ -10,4 +9,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Privacy;
