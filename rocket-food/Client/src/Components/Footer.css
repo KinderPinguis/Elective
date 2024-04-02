@@ -1,0 +1,41 @@
+footer {
+    background-color: var(--color-white);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#footerMenu {
+    padding: 0 10%;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav a {
+    display: block;
+    color: var(--color-black);
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+nav h3 {
+    display: inline-block;
+    color: var(--color-black);
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+#buttonRes * {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: var(--color-white);
+    border: none;
+    border-radius: 50px;
+    color: var(--color-primary) !important;
+}
+
