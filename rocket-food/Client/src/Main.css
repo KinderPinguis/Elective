@@ -29,6 +29,10 @@
     color: var(--color-black);
 }
 
+body{
+    padding-top: 80px;
+}
+
 h1 {
     font-family: var(--font-family-heading);
     font-size: 36px;
@@ -53,11 +57,33 @@ h3 {
     border-radius: 50%;
 }
 
-body{
-    padding-top: 80px;
-}
+
 .rating {
     display: flex;
     align-items: center;
     gap: 4px;
+
+.ShadowBoxImage {
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+}
+
+.TextPrimary{
+    color: var(--color-primary);
+}
+
+.NoSelect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+@media screen and (max-width: 768px){
+    body {
+        padding-top: 0;
+    }
 }

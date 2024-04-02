@@ -1,5 +1,5 @@
 footer {
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -7,8 +7,7 @@ footer {
     z-index: 1000;
 }
 
-#footerMenu
-{
+#footerMenu {
     padding: 0 10%;
 }
 
@@ -25,38 +24,18 @@ nav a {
 
 nav h3 {
     display: inline-block;
-    color: var(--color-primary);
+    color: var(--color-black);
     text-decoration: none;
     padding: 10px 20px;
 }
 
-/*@media screen and (max-width: 768px) {
-    footer {
-        position: relative;
-        padding: 10px;
-    }
+#buttonRes * {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: var(--color-white);
+    border: none;
+    border-radius: 50px;
+    color: var(--color-primary) !important;
+}
 
-    #footerMenu {
-        grid-template-columns: 1fr;
-        justify-content: flex-start;
-    }
-
-    #navMenu {
-        display: none;
-    }
-
-    #navMenu.mobile-menu {
-        display: block;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--color-light);
-        padding: 20px;
-    }
-
-    #navMenu.mobile-menu nav ul li {
-        display: block;
-        margin-bottom: 10px;
-    }
-}*/

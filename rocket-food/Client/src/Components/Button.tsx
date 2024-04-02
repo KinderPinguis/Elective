@@ -5,20 +5,30 @@ import { IconType } from "react-icons";
 import { Col, Row } from "antd";
 
 interface ButtonProps {
-    buttonText: string;
+    onClick: () => void;
+    buttonText?: string;
     buttonImage?: IconType;
 }
 
-const Button: React.FC<ButtonProps> = ({ buttonText, buttonImage }) => {
+const Button: React.FC<ButtonProps> = ({ buttonText, buttonImage, onClick }) => {
     if (!buttonImage) {
         return (
-            <div className="ButtonStyle">
+            <div className="ButtonStyle NoSelect" onClick={onClick}>
                 <p>{buttonText}</p>
             </div>
         );
-    } else {
+    }
+    else if(!buttonText)
+    {
         return (
-            <div className="ButtonStyle">
+            <div className="ButtonStyle NoSelect" onClick={onClick}>
+                {React.createElement(buttonImage)}
+            </div>
+        );
+    }
+    else {
+        return (
+            <div className="ButtonStyle NoSelect" onClick={onClick}>
                 <Row justify={"center"} align={"middle"}>
                     <Col flex={"auto"}>
                         {React.createElement(buttonImage)}

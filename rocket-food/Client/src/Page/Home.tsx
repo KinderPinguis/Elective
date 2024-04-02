@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import './Home.css';
 import Rating from '../Components/Rating';
 import PizzaMan from '../Image/AstroPizzaRed.png';
@@ -86,6 +87,9 @@ function Home() {
                 </Col>
             </Row>
             </body>
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 }
