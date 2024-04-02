@@ -8,6 +8,7 @@ import PizzaRocket from '../Image/AstroRocketNoBg.png';
 import PizzaKing from '../Image/AstroKingNoBg.png';
 import RestaurantReview from '../Image/AstroReviewNoBg.png';
 import {Col, Row} from "antd";
+import Footer from '../Components/Footer';
 
 function Home() {
     const [rating, setRating] = React.useState(0);
@@ -86,6 +87,9 @@ function Home() {
                 </Col>
             </Row>
             </body>
+            <footer>
+                <Footer/>
+            </footer>
         </div>
     );
 }
