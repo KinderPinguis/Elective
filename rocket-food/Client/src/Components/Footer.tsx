@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                 <Col span={15}>
                     <div id="footerMenu">
                         <nav>
-                            <Row wrap={true} align={"middle"} justify={"center"}>
+                            <Row wrap={true} align={"top"} justify={"center"}>
                                 <ul id="AboutMenu">
                                     <Col flex={"auto"}>
                                         <h3>About</h3>

@@ -29,10 +29,6 @@
     color: var(--color-black);
 }
 
-body{
-    padding-top: 80px;
-}
-
 h1 {
     font-family: var(--font-family-heading);
     font-size: 36px;
@@ -74,6 +70,10 @@ h3 .LinkUnderline{
 }
 
 
+body{
+    padding-top: 80px;
+
+
 .rating {
     display: flex;
     align-items: center;
@@ -96,11 +96,5 @@ h3 .LinkUnderline{
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-}
 
 
-@media screen and (max-width: 768px){
-    body {
-        padding-top: 0;
-    }
-}
