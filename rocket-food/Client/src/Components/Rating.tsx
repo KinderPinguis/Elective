@@ -1,0 +1,105 @@
+import React, { useState } from "react";
+import '../Main.css'
+interface RatingProps {
+    className?: string;
+    count: number;
+    value: number;
+    color?: string;
+    hoverColor?: string;
+    activeColor?: string;
+    size?: number;
+    edit?: boolean;
+    isHalf?: boolean;
+    onChange?: (value: number) => void;
+}
+
+interface IconProps {
+    size?: number;
+    color?: string;
+}
+
+const EmptyStar = ({ size = 24, color = "#000000" }: IconProps) => {
+    return (
+        <div style={{ color: color }}>
+            <svg height={size} viewBox="0 0 24 24">
+                <path
+                    d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"
+                    fill="currentColor"
+                />
+                <path d="M0 0h24v24H0z" fill="none" />
+            </svg>
+        </div>
+    );
+};
+
+const Rating: React.FC<RatingProps> = ({
+                                           className,
+                                           count,
+                                           value,
+                                           color = "#ffd700",
+                                           hoverColor = "#ffc107",
+                                           activeColor = "#ffc107",
+                                           size = 30,
+                                           edit = false,
+                                           onChange,
+                                       }) => {
+    const [hoverValue, setHoverValue] = useState<number | undefined>(undefined);
+
+    const handleMouseMove = (index: number) => {
+        if (!edit) {
+            return;
+        }
+        setHoverValue(index);
+    };
+
+    const handleMouseLeave = () => {
+        if (!edit) {
+            return;
+        }
+        setHoverValue(undefined);
+    };
+
+    const handleClick = (index: number) => {
+        if (!edit) {
+            return;
+        }
+        // Toggle the value of the rating
+        const newValue = index + 1 === value ? 0 : index + 1;
+        if (onChange) {
+            onChange(newValue);
+        }
+    };
+    const getColor = (index: number) => {
+        if (hoverValue !== undefined) {
+            if (index <= hoverValue) {
+                return hoverColor;
+            }
+        }
+        if (value > index) {
+            return activeColor;
+        }
+        return color;
+    };
+
+    const stars = [];
+
+    for (let i = 0; i < count; i++) {
+        const star = (
+            <div
+                key={i}
+                style={{ cursor: "pointer" }}
+                onMouseMove={() => handleMouseMove(i)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handleClick(i)}
+            >
+                <EmptyStar size={size} color={getColor(i)} />
+            </div>
+        );
+
+        stars.push(star);
+    }
+
+    return <div className={`rating ${className}`}>{stars}</div>;
+};
+
+export default Rating;

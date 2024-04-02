@@ -15,6 +15,9 @@
     --color-secondary-light: #faac52;
     --color-secondary: #f99928;
     --color-secondary-dark: #df7b07;
+    --hover-rating: #ffc107;
+    --hover-rating-secondary: #ffc107;
+
 
     --font-family-heading: 'Bebas Neue', sans-serif;
     --font-family-body: 'Poppins', sans-serif;
@@ -52,4 +55,9 @@ h3 {
 
 body{
     padding-top: 80px;
+}
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
