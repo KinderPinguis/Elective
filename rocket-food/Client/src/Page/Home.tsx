@@ -10,6 +10,7 @@ import RestaurantReview from '../Image/AstroReviewNoBg.png';
 import {Col, Row} from "antd";
 import Footer from '../Components/Footer';
 
+
 function Home() {
     const [rating, setRating] = React.useState(0);
     return (
