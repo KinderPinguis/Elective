@@ -5,7 +5,6 @@ import { FaSearch, FaShoppingCart, FaSignInAlt } from "react-icons/fa";
 import { Col, Row } from "antd";
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
-import '../Main.css'
 
 const Header: React.FC = () => {
 
@@ -46,7 +45,7 @@ const Header: React.FC = () => {
                                         <li><a href="#"><FaShoppingCart/></a></li>
                                     </Col>
                                     <Col flex={"auto"}>
-                                        <Button buttonImage={FaSignInAlt} onClick={goToLogIn}/>
+                                        <Button buttonImage={FaSignInAlt} buttonText="Login" onClick={goToLogIn}/>
                                     </Col>
                                 </Row>
                             </ul>
