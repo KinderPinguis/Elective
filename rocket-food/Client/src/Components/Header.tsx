@@ -3,12 +3,20 @@ import HomeButton from './HomeButton';
 import Button from './Button';
 import { FaSearch, FaShoppingCart, FaSignInAlt } from "react-icons/fa";
 import { Col, Row } from "antd";
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import '../Main.css'
 
 const Header: React.FC = () => {
+
+    let navigate = useNavigate();
+
+    const goToLogIn = () => {
+        navigate("/LogIn");
+    };
+
     return (
-        <div id="headerDiv">
+        <div id="headerDiv" className="NoSelect">
             <Row wrap={true} align={"middle"} justify={"center"}>
                 <Col span={5}>
                     <HomeButton/>
@@ -38,7 +46,7 @@ const Header: React.FC = () => {
                                         <li><a href="#"><FaShoppingCart/></a></li>
                                     </Col>
                                     <Col flex={"auto"}>
-                                        <Button buttonText="Login" buttonImage={FaSignInAlt}/>
+                                        <Button buttonImage={FaSignInAlt} onClick={goToLogIn}/>
                                     </Col>
                                 </Row>
                             </ul>
