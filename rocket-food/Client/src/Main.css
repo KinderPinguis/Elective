@@ -78,6 +78,7 @@ h3 .LinkUnderline{
     display: flex;
     align-items: center;
     gap: 4px;
+}
 
 .ShadowBoxImage {
     box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);

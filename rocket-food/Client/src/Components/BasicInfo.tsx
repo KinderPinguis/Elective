@@ -4,28 +4,43 @@ import Button from './Button'
 import "./BasicInfo.css"
 import CustomInput from "./CustomInput";
 
-interface BasicInfoProps {
-    changeStep: (step: number) => void;
+interface FormAllData {
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    dobYear: string;
+    dobMonth: string;
+    dobDate: string;
 }
 
-const BasicInfo: React.FC<BasicInfoProps> = ({ changeStep }) => {
+interface BasicInfoProps {
+    formAllData: FormAllData;
+    changeStep: (step: number) => void;
+    handleFormDataChange: (data: FormAllData) => void;
+}
 
-    const [formData, setFormData] = useState<{ firstName: string; middleName: string; lastName: string }>({ firstName: '', middleName: '', lastName:'' });
-    const [dobMonth, setDobMonth] = useState('');
-    const [dobDate, setDobDate] = useState('');
-    const [dobYear, setDobYear] = useState('');
+const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFormDataChange }) => {
+
+    const [formData, setFormData] = useState<{ firstName: string; middleName: string; lastName: string; dobYear: string; dobMonth: string; dobDate: string}>
+    ({
+        firstName: formAllData.firstName,
+        middleName: formAllData.middleName,
+        lastName: formAllData.lastName,
+        dobYear: formAllData.dobYear,
+        dobMonth: formAllData.dobMonth,
+        dobDate: formAllData.dobDate,
+    });
 
     const handleDobChange = (type: string, value: string) => {
         switch (type) {
             case 'month':
-                setDobMonth(value);
-                setDobDate('');
+                setFormData({ ...formData, dobMonth: value, dobDate: '' });
                 break;
             case 'date':
-                setDobDate(value);
+                setFormData({ ...formData, dobDate: value });
                 break;
             case 'year':
-                setDobYear(value);
+                setFormData({ ...formData, dobYear: value });
                 break;
             default:
                 break;
@@ -42,12 +57,12 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ changeStep }) => {
     };
 
     const generateDateOptions = () => {
-        if (dobMonth === '')
+        if (formData.dobMonth === '')
         {
             return [<option key="select-date" value="">Select Date</option>];
         }
 
-        const daysInMonth = new Date(parseInt(dobYear), parseInt(dobMonth), 0).getDate();
+        const daysInMonth = new Date(parseInt(formData.dobYear), parseInt(formData.dobMonth), 0).getDate();
         const options = [];
         for (let i = 1; i <= daysInMonth; i++)
         {
@@ -57,8 +72,15 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ changeStep }) => {
     };
 
     const nextStep = () => {
-        if(formData.firstName && formData.lastName)
+        if(formData.firstName && formData.lastName && formData.dobDate)
         {
+            formAllData.firstName = formData.firstName;
+            formAllData.middleName = formData.middleName;
+            formAllData.lastName = formData.lastName;
+            formAllData.dobYear = formData.dobYear;
+            formAllData.dobMonth = formData.dobMonth;
+            formAllData.dobDate = formData.dobDate;
+            handleFormDataChange(formAllData);
             changeStep(1);
         }
     };
@@ -130,21 +152,21 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ changeStep }) => {
             <Row id="birthDate" wrap={true} align={"middle"} justify={"center"}>
                 <Col span={7}>
                     <p>Year</p>
-                    <select value={dobYear} onChange={(e) => handleDobChange('year', e.target.value)}>
+                    <select value={formData.dobYear} onChange={(e) => handleDobChange('year', e.target.value)}>
                         {generateOptions(1900, new Date().getFullYear())}
                     </select>
                 </Col>
                 <Col span={1}/>
                 <Col span={7}>
                     <p>Month</p>
-                    <select value={dobMonth} onChange={(e) => handleDobChange('month', e.target.value)}>
+                    <select value={formData.dobMonth} onChange={(e) => handleDobChange('month', e.target.value)}>
                         {generateOptions(1, 12)}
                     </select>
                 </Col>
                 <Col span={1}/>
                 <Col span={7}>
                     <p>Date</p>
-                    <select value={dobDate} onChange={(e) => handleDobChange('date', e.target.value)}>
+                    <select value={formData.dobDate} onChange={(e) => handleDobChange('date', e.target.value)}>
                         {generateDateOptions()}
                     </select>
                 </Col>

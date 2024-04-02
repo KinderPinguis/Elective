@@ -4,8 +4,19 @@ import Button from './Button'
 import "./ContactInfo.css"
 import CustomInput from "./CustomInput";
 
+interface FormAllData {
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    dobYear: string;
+    dobMonth: string;
+    dobDate: string;
+}
+
 interface ContactInfoProps {
+    formAllData: FormAllData;
     changeStep: (step: number) => void;
+    handleFormDataChange: (data: FormAllData) => void;
 }
 
 const ContactInfo: React.FC<ContactInfoProps> = ({ changeStep }) => {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row,Col } from 'antd';
 import Header from '../Components/Header';
+import Footer from "../Components/Footer";
 import './LogIn.css';
 import Button from '../Components/Button';
 import { useNavigate } from 'react-router-dom';
@@ -109,6 +110,9 @@ function LogIn() {
                 <Button buttonText="Create an account" onClick={goToCreateAccount} />
             </Row>
             </body>
+            <footer>
+
+            </footer>
         </div>
     );
 }

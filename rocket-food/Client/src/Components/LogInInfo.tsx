@@ -5,8 +5,19 @@ import "./LogInInfo.css"
 import CustomInput from "./CustomInput";
 import InputPassword from "./PasswordInput";
 
+interface FormAllData {
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    dobYear: string;
+    dobMonth: string;
+    dobDate: string;
+}
+
 interface LogInInfoProps {
+    formAllData: FormAllData;
     changeStep: (step: number) => void;
+    handleFormDataChange: (data: FormAllData) => void;
 }
 
 const ContactInfo: React.FC<LogInInfoProps> = ({ changeStep }) => {
