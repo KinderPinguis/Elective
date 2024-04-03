@@ -1,0 +1,23 @@
+#Title{
+    color: var(--color-primary);
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#SubTitle{
+    color: var(--color-secondary-dark);
+}
+
+#PizzaMan{
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+#ColInfos{
+    text-align: center;
+}
+
+img{
+    width: 400px;
+}

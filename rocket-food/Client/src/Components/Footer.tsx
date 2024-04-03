@@ -24,12 +24,12 @@ const Footer: React.FC = () => {
     };
     return (
         <footer>
-            <Row wrap={true} align={"middle"} justify={"center"}>
+            <Row wrap={true} justify={"center"}>
                 <div id="footerHome">
-                    <Row wrap={true} align={"middle"} justify={"center"}>
+                    <Row wrap={true} justify={"center"}>
                         <HomeButton/>
                     </Row>
-                    <Row wrap={true} align={"middle"} justify={"center"} id={"buttonRes"}>
+                    <Row wrap={true} justify={"center"} id={"buttonRes"}>
                         <Button buttonImage={FaInstagram} onClick={goToInsta}/>
                         <Button buttonImage={FaFacebook} onClick={goToFacebook}/>
                         <Button buttonImage={FaTwitter} onClick={goToTwitter}/>
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                 <Col span={15}>
                     <div id="footerMenu">
                         <nav>
-                            <Row wrap={true} align={"top"} justify={"center"}>
+                            <Row wrap={true} align={"top"} justify={"start"}>
                                 <ul id="AboutMenu">
                                     <Col flex={"auto"}>
                                         <h3>About</h3>
@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
                                     </Col>
                                 </ul>
                                 <ul id="GetMenu">
-                                    <Col flex={"auto"}>
+                                    <Col flex={"auto"} pull={0}>
                                         <h3>Get in Touch</h3>
                                     </Col>
                                     <Col flex={"auto"}>
