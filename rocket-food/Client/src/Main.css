@@ -54,14 +54,15 @@ h3 {
 }
 
 
-body{
+body {
     padding-top: 80px;
-
+}
 
 .rating {
     display: flex;
     align-items: center;
     gap: 4px;
+}
 
 .ShadowBoxImage {
     box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
@@ -77,7 +78,12 @@ body{
     -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+    user-select: none; /* Non-prefixed version, currently*/
+}
 
+@media screen and (max-width: 768px){
+    body {
+        padding-top: 0;
+    }
+}
 
