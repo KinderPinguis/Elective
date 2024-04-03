@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Components/Header';
 import './Home.css';
+import '../Main.css';
 import Rating from '../Components/Rating';
 import PizzaMan from '../Image/AstroPizzaRed.png';
 import PizzaImage from '../Image/AstroEasyNoBg.png';
@@ -14,63 +15,61 @@ function Home() {
     const [rating, setRating] = React.useState(0);
     return (
         <div className="Home">
-            <header className="Home-header">
+            <header>
                 <Header/>
             </header>
             <body>
-            <Row gutter={5} wrap={true} align={"middle"} justify={"center"}>
-                <Col pull={5}>
+            <Row wrap={true} justify={"center"}>
+                <Col span={8}>
                     <h1>
-                        Be The Fastest <br/>In Delivering <br/>Your <span
-                        style={{color: '#eb5757', fontSize: '40px', fontWeight: 'bold'}}>Food</span>
+                        Be The Fastest <br/>In Delivering<br/> Your <span id={"Title"}>Food</span>
                     </h1>
                 </Col>
-                <Col pull={50}>
-                    <img src={PizzaMan} alt="PizzaMan" className="RoundedImage"
-                         style={{width: '200px', height: '200px', position: 'relative'}}/>
+                <Col>
+                    <img src={PizzaMan} alt="PizzaMan" className="RoundedImage" id={"PizzaMan"}/>
                 </Col>
             </Row>
-            <Row wrap={true} align={"middle"} justify={"center"}>
-                <Col style={{flexDirection: 'column', textAlign: 'center'}}>
-                    <p style={{color: '#eb5757'}}>What we serve</p>
-                    <h1 style={{fontWeight: 'bold'}}>Your Favorite Food<br/>Delivery Partner</h1>
+            <Row wrap={true} justify={"center"}>
+                <Col id={"ColInfos"}>
+                    <h1 id={"Title"}>What we serve</h1>
+                    <h1>Your Favorite Food<br/>Delivery Partner</h1>
                 </Col>
-                <Row gutter={16}>
-                    <Col lg={8} className="mb-5" style={{textAlign: 'center', alignItems: 'center'}}>
-                        <Col className="position-relative mb-4">
-                            <img src={PizzaImage} alt="PizzaMan"/>
+                <Row>
+                    <Col style={{textAlign: 'center'}}>
+                        <Col>
+                            <img src={PizzaImage} alt="PizzaImage"/>
                         </Col>
-                        <h2 style={{color: '#df7b07'}}>Best Quality</h2>
+                        <h2 id={"SubTitle"}>Best Quality</h2>
                         <p>Rebum lorem no eos ut ipsum</p>
                         <p>diam tempor sed rebum elitr ipsum</p>
                     </Col>
-                    <Col lg={8} className="mb-5" style={{textAlign: 'center', alignItems: 'center'}}>
-                        <Col className="position-relative mb-4">
-                            <img className="img-fluid rounded w-100" src={PizzaRocket} alt="PizzaRocket"/>
+                    <Col style={{textAlign: 'center'}}>
+                        <Col>
+                            <img src={PizzaRocket} alt="PizzaRocket"/>
                         </Col>
-                        <h2 style={{color: '#df7b07'}}>Best Quality</h2>
+                        <h2 id={"SubTitle"}>Best Quality</h2>
                         <p>Rebum lorem no eos ut ipsum</p>
                         <p>diam tempor sed rebum elitr ipsum</p>
                     </Col>
-                    <Col lg={8} className="mb-5" style={{textAlign: 'center', alignItems: 'center'}}>
-                        <Col className="position-relative mb-4">
-                            <img className="img-fluid rounded w-100" src={PizzaKing} alt="PizzaKing"/>
+                    <Col style={{textAlign: 'center'}}>
+                        <Col>
+                            <img src={PizzaKing} alt="PizzaKing"/>
                         </Col>
-                        <h2 style={{color: '#df7b07'}}>Best Quality</h2>
+                        <h2 id={"SubTitle"}>Best Quality</h2>
                         <p>Rebum lorem no eos ut ipsum</p>
                         <p>diam tempor sed rebum elitr ipsum</p>
                     </Col>
                 </Row>
             </Row>
 
-            <Row gutter={5} wrap={true} align={"middle"} justify={'center'}>
-                <Col pull={2}>
-                    <img src={RestaurantReview} alt="PizzaMan"
+            <Row wrap={true} justify={'center'}>
+                <Col >
+                    <img src={RestaurantReview} alt="RestaurantReview"
                          style={{width: '400px', height: '400px', position: 'relative'}}/>
                 </Col>
-                <Col pull={40}>
-                    <p style={{color: '#eb5757'}}>WHAT THEY SAY</p>
-                    <h2 style={{fontSize: '40px', fontWeight: 'bold'}}>
+                <Col>
+                    <h1 id={"Title"}>WHAT THEY SAY</h1>
+                    <h2>
                         What Our Costumer<br/>Say About Us
                     </h2>
                     <p>Rebum lorem no eos ut ipsum<br/>diam tempor sed rebum elitr ipsum<br/>diam tempor sed rebum elitr ipsum<br/>diam tempor sed rebum elitr ipsum</p>
