@@ -24,12 +24,12 @@ const Footer: React.FC = () => {
     };
     return (
         <footer>
-            <Row wrap={true} align={"middle"} justify={"center"}>
+            <Row wrap={true} justify={"center"}>
                 <div id="footerHome">
-                    <Row wrap={true} align={"middle"} justify={"center"}>
+                    <Row wrap={true} justify={"center"}>
                         <HomeButton/>
                     </Row>
-                    <Row wrap={true} align={"middle"} justify={"center"} id={"buttonRes"}>
+                    <Row wrap={true} justify={"center"} id={"buttonRes"}>
                         <Button buttonImage={FaInstagram} onClick={goToInsta}/>
                         <Button buttonImage={FaFacebook} onClick={goToFacebook}/>
                         <Button buttonImage={FaTwitter} onClick={goToTwitter}/>
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                 <Col span={15}>
                     <div id="footerMenu">
                         <nav>
-                            <Row wrap={true} align={"top"} justify={"center"}>
+                            <Row wrap={true} align={"top"} justify={"start"}>
                                 <ul id="AboutMenu">
                                     <Col flex={"auto"}>
                                         <h3>About</h3>
@@ -100,7 +100,8 @@ const Footer: React.FC = () => {
                                     <Col flex={"auto"}>
                                         <p>Question or feedback?</p>
                                         <p>We'd love to hear from you</p>
-                                        <Button buttonText={"Email Address"} buttonImage={FaArrowRight} onClick={goToContact}/>
+                                        <Button buttonText={"Email Address"} buttonImage={FaArrowRight}
+                                                    onClick={goToContact}/>
                                     </Col>
                                 </ul>
                             </Row>
