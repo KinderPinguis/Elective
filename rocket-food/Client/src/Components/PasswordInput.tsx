@@ -37,7 +37,6 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ label, name, value, onCha
             <CustomInput
                 name={name}
                 type={passwordHidden ? 'password' : 'text'}
-                placeholder="Password"
                 value={value}
                 onChange={onChange}
             />

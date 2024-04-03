@@ -111,7 +111,7 @@ function LogIn() {
             </Row>
             </body>
             <footer>
-
+                <Footer/>
             </footer>
         </div>
     );
