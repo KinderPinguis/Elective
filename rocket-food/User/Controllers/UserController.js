@@ -1,4 +1,3 @@
-const { Request, Response } = require('express');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../Models/UserModel');
 const bcrypt = require('bcrypt');
@@ -29,8 +28,7 @@ exports.login = async (req, res) => {
 exports.createUser = async (req, res) => {
     try {
         const { password } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10);
-        req.body.password = hashedPassword;
+        req.body.password = await bcrypt.hash(password, 10);
         const newUser = new UserModel(req.body);
         await newUser.save();
         res.status(201).json(newUser);

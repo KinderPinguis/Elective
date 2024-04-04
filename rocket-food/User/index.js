@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const userRoutes = require('./Routes/UserRoutes');
-const { authMiddleware } = require('./Middlewares/AuthMiddleware');
 
 dotenv.config();
 
@@ -13,8 +12,7 @@ app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI || '', { useNewUrlParser: true, useUnifiedTopology: true });
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use('/api', userRoutes);
 

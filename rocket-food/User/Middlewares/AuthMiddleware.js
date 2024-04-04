@@ -1,4 +1,3 @@
-const { Request, Response } = require('express');
 const jwt = require('jsonwebtoken');
 
 exports.authMiddleware = (req, res, next) => {
@@ -6,8 +5,7 @@ exports.authMiddleware = (req, res, next) => {
     if (!token) return res.status(401).json({ message: 'Authorization token is required' });
 
     try {
-        const decoded = jwt.verify(token, process.env.ACCESS_JWT_KEY || '');
-        req.user = decoded;
+        req.user = jwt.verify(token, process.env.ACCESS_JWT_KEY || '');
         next();
     } catch (error) {
         res.status(401).json({ message: 'Invalid token' });
