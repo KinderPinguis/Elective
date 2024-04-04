@@ -1,0 +1,26 @@
+.Article img {
+    width: 200px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#Text{
+    max-width: 200px;
+    background-color: var(--color-light);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#Text *{
+   padding-left: 1px;
+}
+
+#Cart *{
+    width: 30px;
+    height: 30px;
+}
+
+#Cart{
+    position: absolute;
+    bottom: 0;
+}
