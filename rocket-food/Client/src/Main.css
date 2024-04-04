@@ -1,0 +1,108 @@
+:root {
+    --color-white: #ffffff;
+    --color-light: #f4f4f4;
+    --color-gray: #a3a3a3;
+    --color-black: #2d2d2d;
+
+    --color-succes: #2fdb5f;
+    --color-warning: #f1c75d;
+    --color-error: #f77272;
+
+    --color-primary-light: #f47b7b;
+    --color-primary: #eb5757;
+    --color-primary-dark: #ce3535;
+
+    --color-secondary-light: #faac52;
+    --color-secondary: #f99928;
+    --color-secondary-dark: #df7b07;
+    --hover-rating: #ffc107;
+    --hover-rating-secondary: #ffc107;
+
+
+    --font-family-heading: 'Bebas Neue', sans-serif;
+    --font-family-body: 'Poppins', sans-serif;
+}
+
+* {
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    color: var(--color-black);
+}
+
+h1 {
+    font-family: var(--font-family-heading);
+    font-size: 36px;
+    color: var(--color-black);
+}
+
+h2 {
+    font-family: var(--font-family-heading);
+    font-size: 24px;
+    color: var(--color-black);
+}
+
+h3 {
+    font-family: var(--font-family-heading);
+    font-size: 18px;
+    color: var(--color-black);
+}
+
+.LinkUnderline{
+    color: var(--color-black);
+    text-decoration: underline;
+    display: inline-block;
+}
+
+h3 .LinkUnderline{
+    font-family: var(--font-family-heading);
+    font-size: 18px;
+}
+
+.LinkUnderline:hover {
+    cursor: pointer;
+    color: var(--color-primary)!important;
+}
+
+.RoundedImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+
+body {
+    padding-top: 80px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ShadowBoxImage {
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+}
+
+.TextPrimary{
+    color: var(--color-primary);
+}
+
+.NoSelect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+@media screen and (max-width: 768px){
+    body {
+        padding-top: 0;
+    }
+}
+
+
