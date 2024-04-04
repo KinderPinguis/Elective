@@ -1,0 +1,27 @@
+.card {
+    position: relative;
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    position: relative;
+    border-radius: 20px; /* Adjust as needed */
+    overflow: hidden; /* Ensure that content overflows are hidden to maintain rounded corners */
+    width: 300px; /* Adjust width as needed */
+    height: 300px;
+}
+
+.text-container {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #f4f4f4;
+    text-align: left;
+}
+
+.link {
+    color: #f4f4f4;
+}

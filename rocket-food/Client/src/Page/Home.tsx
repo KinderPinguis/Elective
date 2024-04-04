@@ -9,7 +9,11 @@ import PizzaRocket from '../Image/AstroRocketNoBg.png';
 import PizzaKing from '../Image/AstroKingNoBg.png';
 import RestaurantReview from '../Image/AstroReviewNoBg.png';
 import {Col, Row} from "antd";
-import Footer from '../Components/Footer';
+import Card from '../Components/Card';
+import DominosImg from '../Image/DominosPizza.jpeg';
+import PizzaImg from '../Image/PizzaHutjpeg.jpeg';
+
+//import Footer from '../Components/Footer';
 
 
 function Home() {
@@ -86,10 +90,20 @@ function Home() {
                     </p>
                 </Col>
             </Row>
+            <Row wrap={true} justify={"center"}>
+                <Card
+                    title="Dominos Pizza"
+                    imageUrl={DominosImg}
+                    link="https://www.dominos.fr/"
+                />
+                <Card
+                    title="Pizza Hut"
+                    imageUrl={PizzaImg}
+                    link="https://www.dominos.fr/"
+                />
+            </Row>
             </body>
-            <footer>
-                <Footer/>
-            </footer>
+
         </div>
     );
 }
