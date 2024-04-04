@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import { Col, Row } from "antd";
 import Button from './Button'
 import "./ContactInfo.css"
 import CustomInput from "./CustomInput";
-import NumberIconeH2 from "./numberIconH2";
+import NumberIconH2 from "./NumberIconH2";
 import {FormAllData} from '../CustomTypes'
+import ErrorText from "./ErrorText";
+import {toggleErrorClass} from '../MainFonction'
 
 interface ContactInfoProps {
     formAllData: FormAllData;
@@ -22,6 +24,8 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ formAllData, changeStep, hand
         tel: formAllData.tel
     });
 
+    const numberIconRef = useRef<HTMLDivElement>(null);
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -36,6 +40,30 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ formAllData, changeStep, hand
         {
             save();
             changeStep(2);
+            if (numberIconRef.current) {
+                numberIconRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        else{
+            const errorTextElement = document.getElementById('errorText');
+            const streetAddressInput = document.getElementsByName('streetAddress')[0] as HTMLInputElement;
+            const cityInput = document.getElementsByName('city')[0] as HTMLInputElement;
+            const countryInput = document.getElementsByName('country')[0] as HTMLInputElement;
+            const telInput = document.getElementsByName('tel')[0] as HTMLInputElement;
+
+            if (errorTextElement) {
+                errorTextElement.style.display = 'block';
+            }
+
+            toggleErrorClass(streetAddressInput, streetAddressInput.value);
+            toggleErrorClass(cityInput, cityInput.value);
+            toggleErrorClass(countryInput, countryInput.value);
+            toggleErrorClass(telInput, telInput.value);
+
+            if (numberIconRef.current) {
+                numberIconRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     };
 
@@ -49,16 +77,18 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ formAllData, changeStep, hand
 
     return (
         <div id="contactInfo">
-            <NumberIconeH2 numberIcone={1} h2Text="Basic info" lighted={true} onClick={prevStep}/>
-            <NumberIconeH2 numberIcone={2} h2Text="Contact info"/>
+            <NumberIconH2 numberIcone={1} h2Text="Basic info" lighted={true} onClick={prevStep}/>
+            <NumberIconH2 numberIcone={2} h2Text="Contact info" ref={numberIconRef}/>
             <Row wrap={true} align={"middle"} justify={"start"}>
                 <h3>*All fields required unless noted.</h3>
             </Row>
+            <ErrorText errorTitle="Empty fields" errorText="Some required fields are not complete" />
             <Row wrap={true} align={"middle"} justify={"start"}>
                 <CustomInput
                     label="*Street address"
                     name="streetAddress"
                     type="text"
+                    placeholder="Street address"
                     value={formData.streetAddress}
                     onChange={handleInputChange}
                 />
@@ -68,6 +98,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ formAllData, changeStep, hand
                     label="*City"
                     name="city"
                     type="text"
+                    placeholder="City"
                     value={formData.city}
                     onChange={handleInputChange}
                 />
@@ -77,6 +108,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ formAllData, changeStep, hand
                     label="*Country"
                     name="country"
                     type="text"
+                    placeholder="Country"
                     value={formData.country}
                     onChange={handleInputChange}
                 />
@@ -86,6 +118,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ formAllData, changeStep, hand
                     label="*Telephone"
                     name="tel"
                     type="tel"
+                    placeholder="Telephone"
                     value={formData.tel}
                     onChange={handleInputChange}
                 />
@@ -99,7 +132,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ formAllData, changeStep, hand
                     <Button buttonText="Next" onClick={nextStep}/>
                 </Col>
             </Row>
-            <NumberIconeH2 numberIcone={3} h2Text="Login info" lighted={true} onClick={nextStep}/>
+            <NumberIconH2 numberIcone={3} h2Text="Login info" lighted={true} onClick={nextStep}/>
         </div>
     );
 };

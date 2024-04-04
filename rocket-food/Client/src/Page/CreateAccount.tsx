@@ -59,9 +59,9 @@ function CreateAccount() {
                 <Row wrap={true} align={"middle"} justify={"center"}>
                     <Steps className="CustomSteps" size="small" labelPlacement="vertical" responsive={true}
                            current={currentStep}>
-                        <Step className="CustomStep" onClick={() => changeStep(0)} title="Basic info"/>
-                        <Step className="CustomStep" onClick={() => changeStep(1)} title="Contact info"/>
-                        <Step className="CustomStep" onClick={() => changeStep(2)} title="Login info"/>
+                        <Step className="CustomStep" title="Basic info"/>
+                        <Step className="CustomStep" title="Contact info"/>
+                        <Step className="CustomStep" title="Login info"/>
                     </Steps>
                 </Row>
 

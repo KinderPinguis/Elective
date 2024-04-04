@@ -6,12 +6,24 @@
     color: var(--color-primary);
 }
 
+#button{
+    margin-bottom: 30px;
+}
+
 #button *{
     width: 100%;
 }
 
 #gender {
     margin-bottom: 20px;
+}
+
+#gender .ant-radio-checked .ant-radio-inner{
+    background-color: var(--color-secondary);
+}
+
+#gender .ant-radio-inner{
+    border-color: var(--color-secondary);
 }
 
 #birthDate {

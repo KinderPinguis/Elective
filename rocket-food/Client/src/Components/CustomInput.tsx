@@ -1,7 +1,7 @@
 import React from 'react';
 import './CustomInput.css'
 
-interface InputTextProps {
+interface CustomInputProps {
     label?: string;
     name: string;
     type: string;
@@ -10,7 +10,8 @@ interface InputTextProps {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputText: React.FC<InputTextProps> = ({ label, name, type, placeholder, value, onChange }) => {
+const CustomInput: React.FC<CustomInputProps> = ({ label, name, type, placeholder, value, onChange }) => {
+
     return (
         <div id="customInput">
             {label && <p>{label}</p>}
@@ -25,4 +26,4 @@ const InputText: React.FC<InputTextProps> = ({ label, name, type, placeholder, v
     );
 };
 
-export default InputText;
+export default CustomInput;

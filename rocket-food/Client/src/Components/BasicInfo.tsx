@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
-import { Row, Col } from "antd";
-import Button from './Button'
-import "./BasicInfo.css"
+import React, { useState, useRef } from 'react';
+import { Row, Col, Radio, RadioChangeEvent  } from "antd";
+import Button from './Button';
+import "./BasicInfo.css";
 import CustomInput from "./CustomInput";
-import NumberIconeH2 from "./numberIconH2";
-import {FormAllData} from '../CustomTypes'
+import NumberIconH2 from "./NumberIconH2";
+import { FormAllData } from '../CustomTypes';
+import ErrorText from "./ErrorText";
+import {toggleErrorClass} from '../MainFonction'
 
 interface BasicInfoProps {
     formAllData: FormAllData;
@@ -13,7 +15,6 @@ interface BasicInfoProps {
 }
 
 const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFormDataChange }) => {
-
     const [formData, setFormData] = useState<{ firstName: string; middleName: string; lastName: string; gender: "male" | "female" | "nonBinary" | ""; dobYear: string; dobMonth: string; dobDate: string}>
     ({
         firstName: formAllData.firstName,
@@ -25,12 +26,12 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
         dobDate: formAllData.dobDate,
     });
 
-    const handleGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if(e.target.value === "male" || e.target.value === "female" || e.target.value === "nonBinary")
-        {
+    const numberIconRef = useRef<HTMLDivElement>(null);
+
+    const handleGenderChange = (e: RadioChangeEvent) => {
+        if (e.target.value === "male" || e.target.value === "female" || e.target.value === "nonBinary") {
             setFormData({ ...formData, gender: e.target.value });
-        }
-        else {
+        } else {
             setFormData({ ...formData, gender: "" });
         }
     };
@@ -53,41 +54,53 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
 
     const generateOptions = (start: number, end: number) => {
         const options = [];
-        for (let i = start; i <= end; i++)
-        {
+        for (let i = start; i <= end; i++) {
             options.push(<option key={i} value={i}>{i}</option>);
         }
         return options;
     };
 
     const generateDateOptions = () => {
-        if (formData.dobMonth === '')
-        {
+        if (formData.dobMonth === '') {
             return [<option key="select-date" value="">Select Date</option>];
         }
 
         const daysInMonth = new Date(parseInt(formData.dobYear), parseInt(formData.dobMonth), 0).getDate();
         const options = [];
-        for (let i = 1; i <= daysInMonth; i++)
-        {
+        for (let i = 1; i <= daysInMonth; i++) {
             options.push(<option key={i} value={i}>{i}</option>);
         }
         return options;
     };
 
     const nextStep = () => {
-        if(formData.firstName && formData.lastName && formData.dobDate)
-        {
+        if (formData.firstName && formData.lastName && formData.dobDate) {
             save();
             changeStep(1);
+        }
+
+        else {
+            const errorTextElement = document.getElementById('errorText');
+
+            if (errorTextElement) {
+                errorTextElement.style.display = 'block';
+            }
+
+            const firstNameInput = document.getElementsByName('firstName')[0] as HTMLInputElement;
+            const lastNameInput = document.getElementsByName('lastName')[0] as HTMLInputElement;
+
+            toggleErrorClass(firstNameInput, firstNameInput.value);
+            toggleErrorClass(lastNameInput, lastNameInput.value);
+
+            if (numberIconRef.current) {
+                numberIconRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     };
 
     const lastStep = () => {
-        if(formData.firstName && formData.lastName && formData.dobDate)
-        {
-            if(formAllData.streetAddress && formAllData.city && formAllData.country && formAllData.tel)
-            {
+        if (formData.firstName && formData.lastName && formData.dobDate) {
+            if (formAllData.streetAddress && formAllData.city && formAllData.country && formAllData.tel) {
                 save();
                 changeStep(2);
             }
@@ -103,7 +116,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
         formAllData.dobMonth = formData.dobMonth;
         formAllData.dobDate = formData.dobDate;
         handleFormDataChange(formAllData);
-    }
+    };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -111,10 +124,11 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
 
     return (
         <div id="basicInfo">
-            <NumberIconeH2 numberIcone={1} h2Text="Basic info"/>
+            <NumberIconH2 numberIcone={1} h2Text="Basic info" ref={numberIconRef} />
             <Row wrap={true} align={"middle"} justify={"start"}>
                 <h3>*All fields required unless noted.</h3>
             </Row>
+            <ErrorText errorTitle="Empty fields" errorText="Some required fields are not complete" />
             <Row wrap={true} align={"middle"} justify={"start"}>
                 <CustomInput
                     label="*First name"
@@ -149,20 +163,12 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
                 <p>What's your gender ? (optional)</p>
             </Row>
             <Row id="gender" wrap={true} align={"middle"} justify={"start"}>
-                <Col>
-                    <input type="radio" id="female" name="gender" value="female" checked={formData.gender === "female"} onChange={handleGenderChange}/>
-                    <label htmlFor="female">Female</label>
-                </Col>
-                <Col style={{ width: '50px' }}/>
-                <Col>
-                    <input type="radio" id="male" name="gender" value="male" checked={formData.gender === "male"} onChange={handleGenderChange}/>
-                    <label htmlFor="male">Male</label>
-                </Col>
-                <Col style={{ width: '50px' }}/>
-                <Col>
-                    <input type="radio" id="nonBinary" name="gender" value="nonBinary" checked={formData.gender === "nonBinary"} onChange={handleGenderChange}/>
-                    <label htmlFor="nonBinary">Non-binary</label>
-                </Col>
+                <Radio.Group value={formData.gender} onChange={handleGenderChange}>
+                    <Radio value="female">Female</Radio>
+                    <Radio value="male">Male</Radio>
+                    <Radio value="nonBinary">Non-binary</Radio>
+                    <Radio value="">I don't want to answer</Radio>
+                </Radio.Group>
             </Row>
             <Row wrap={true} align={"middle"} justify={"start"}>
                 <p>*What's your date of birth ?</p>
@@ -192,8 +198,8 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
             <Row id="button" wrap={true} align={"middle"} justify={"center"}>
                 <Button buttonText="Next" onClick={nextStep}/>
             </Row>
-            <NumberIconeH2 numberIcone={2} h2Text="Contact info" lighted={true} onClick={nextStep}/>
-            <NumberIconeH2 numberIcone={3} h2Text="Login info" lighted={true} onClick={lastStep}/>
+            <NumberIconH2 numberIcone={2} h2Text="Contact info" lighted={true} onClick={nextStep}/>
+            <NumberIconH2 numberIcone={3} h2Text="Login info" lighted={true} onClick={lastStep}/>
         </div>
     );
 };

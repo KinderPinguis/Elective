@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import AstroBurgerWhite from '../Image/AstroBurgerWhite.png';
 import InputPassword from '../Components/PasswordInput';
 import CustomInput from '../Components/CustomInput';
+import ErrorText from "../Components/ErrorText";
 
 function LogIn() {
     let navigate = useNavigate();
@@ -19,9 +20,9 @@ function LogIn() {
     };
 
     const onSubmit = () => {
-        const errorTextElement = document.getElementById('errorText');
-
         if (!formData.username || !formData.password) {
+            const errorTextElement = document.getElementById('errorText');
+
             if (errorTextElement) {
                 errorTextElement.style.display = 'block';
             }
@@ -37,7 +38,7 @@ function LogIn() {
                 passwordInput.style.border = '2px solid var(--color-error)';
             }
         } else {
-            // Your submission logic here
+
         }
     };
 
@@ -59,15 +60,12 @@ function LogIn() {
                     <Row wrap={true} align={'middle'} justify={'center'}>
                         <h1 className="TextPrimary">SIGN IN</h1>
                     </Row>
-                    <Row>
-                        <p id="errorText">Login Failed : Incorrect email or password</p>
-                    </Row>
+                    <ErrorText errorTitle="Login Failed" errorText="Incorrect email or password"/>
                     <Row wrap={true} align={'middle'} justify={'start'}>
                         <CustomInput
                             label="Email or mobile phone number"
                             name="username"
                             type="text"
-                            placeholder="Username"
                             value={formData.username}
                             onChange={handleInputChange}
                         />
