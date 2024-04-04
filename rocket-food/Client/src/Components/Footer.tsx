@@ -94,13 +94,14 @@ const Footer: React.FC = () => {
                                     </Col>
                                 </ul>
                                 <ul id="GetMenu">
-                                    <Col flex={"auto"} pull={0}>
+                                    <Col flex={"auto"}>
                                         <h3>Get in Touch</h3>
                                     </Col>
                                     <Col flex={"auto"}>
                                         <p>Question or feedback?</p>
                                         <p>We'd love to hear from you</p>
-                                        <Button buttonText={"Email Address"} buttonImage={FaArrowRight} onClick={goToContact}/>
+                                        <Button buttonText={"Email Address"} buttonImage={FaArrowRight}
+                                                    onClick={goToContact}/>
                                     </Col>
                                 </ul>
                             </Row>
