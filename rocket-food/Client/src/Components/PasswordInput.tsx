@@ -9,9 +9,10 @@ interface PasswordInputProps {
     name: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const PasswordInput: React.FC<PasswordInputProps> = ({ label, name, value, onChange }) => {
+const PasswordInput: React.FC<PasswordInputProps> = ({ label, name, value, onChange, onKeyPress }) => {
     const [passwordHidden, setPasswordHidden] = useState(true);
     const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -39,6 +40,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ label, name, value, onCha
                 type={passwordHidden ? 'password' : 'text'}
                 value={value}
                 onChange={onChange}
+                onKeyPress={onKeyPress}
             />
         </Row>
     );

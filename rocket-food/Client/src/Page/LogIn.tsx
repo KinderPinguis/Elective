@@ -9,36 +9,58 @@ import AstroBurgerWhite from '../Image/AstroBurgerWhite.png';
 import InputPassword from '../Components/PasswordInput';
 import CustomInput from '../Components/CustomInput';
 import ErrorText from "../Components/ErrorText";
+import axios from 'axios';
 
 function LogIn() {
     let navigate = useNavigate();
 
-    const [formData, setFormData] = useState<{ username: string; password: string }>({ username: '', password: '' });
+    const [formData, setFormData] = useState<{ email: string; password: string }>({ email: '', password: '' });
+    const [errorTitle, setErrorTitle] = useState<string>("");
+    const [errorText, setErrorText] = useState<string>("");
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const onSubmit = () => {
-        if (!formData.username || !formData.password) {
+    const onSubmit = async () => {
+        if (!formData.email || !formData.password) {
+            setErrorTitle("Login Failed");
+            setErrorText("Please enter your email and password");
             const errorTextElement = document.getElementById('errorText');
 
             if (errorTextElement) {
                 errorTextElement.style.display = 'block';
             }
 
-            const usernameInput = document.getElementsByName('username')[0] as HTMLInputElement;
+            const emailInput = document.getElementsByName('email')[0] as HTMLInputElement;
             const passwordInput = document.getElementsByName('password')[0] as HTMLInputElement;
 
-            if (usernameInput) {
-                usernameInput.style.border = '2px solid var(--color-error)';
+            if (emailInput) {
+                emailInput.classList.add('ErrorInput');
             }
 
             if (passwordInput) {
-                passwordInput.style.border = '2px solid var(--color-error)';
+                emailInput.classList.add('ErrorInput');
             }
-        } else {
-
+        }
+        else
+        {
+            const response = await axios.post('http://localhost:3000/api/login', {
+                email: formData.email,
+                password: formData.password
+            }).then(response => {
+                const token = response.data.accessToken;
+                localStorage.setItem('token', token);
+                navigate('/HomeLogIn');
+            })
+            .catch(error => {
+                const errorTextElement = document.getElementById('errorText');
+                if (errorTextElement) {
+                    errorTextElement.style.display = 'block';
+                }
+                setErrorTitle("Login Failed");
+                setErrorText(error.response.data.message);
+            });
         }
     };
 
@@ -60,14 +82,19 @@ function LogIn() {
                     <Row wrap={true} align={'middle'} justify={'center'}>
                         <h1 className="TextPrimary">SIGN IN</h1>
                     </Row>
-                    <ErrorText errorTitle="Login Failed" errorText="Incorrect email or password"/>
+                    <ErrorText errorTitle={errorTitle} errorText={errorText}/>
                     <Row wrap={true} align={'middle'} justify={'start'}>
                         <CustomInput
                             label="Email or mobile phone number"
-                            name="username"
+                            name="email"
                             type="text"
-                            value={formData.username}
+                            value={formData.email}
                             onChange={handleInputChange}
+                            onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    onSubmit();
+                                }
+                            }}
                         />
                     </Row>
                     <InputPassword
@@ -75,6 +102,11 @@ function LogIn() {
                         name="password"
                         value={formData.password}
                         onChange={handleInputChange}
+                        onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                                onSubmit();
+                            }
+                        }}
                     />
                     <Row className="ButtonLogIn" wrap={true} align={'middle'} justify={'center'}>
                         <Button buttonText="Log in" onClick={onSubmit} />

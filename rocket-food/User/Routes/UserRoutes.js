@@ -9,7 +9,6 @@ router.post('/users', userController.createUser);
 const { authMiddleware } = require('../Middlewares/AuthMiddleware');
 router.use(authMiddleware);
 
-router.post('/users', userController.createUser);
 router.get('/users', userController.getUsers);
 router.get('/users/:id', userController.getUserById);
 router.put('/users/:id', userController.updateUser);

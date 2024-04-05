@@ -2,12 +2,14 @@ import React, {useState, useRef} from 'react';
 import { Col, Row } from "antd";
 import Button from './Button'
 import "./LogInInfo.css"
+import { useNavigate } from 'react-router-dom';
 import CustomInput from "./CustomInput";
 import InputPassword from "./PasswordInput";
 import NumberIconH2 from "./NumberIconH2";
 import {FormAllData} from '../CustomTypes'
 import ErrorText from "./ErrorText";
 import {toggleErrorClass} from '../MainFonction'
+import axios from "axios";
 
 interface LogInInfoProps {
     formAllData: FormAllData;
@@ -16,6 +18,8 @@ interface LogInInfoProps {
 }
 
 const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handleFormDataChange }) => {
+
+    let navigate = useNavigate();
 
     const [formData, setFormData] = useState<{ email: string; confirmEmail: string; password: string; confirmPassword: string }>
     ({
@@ -49,7 +53,7 @@ const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handle
         return emailRegex.test(email);
     };
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         let newErrorTitle = "";
         let newErrorText = "";
 
@@ -130,7 +134,28 @@ const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handle
 
         else
         {
+            save();
 
+            const response = await axios.post('http://localhost:3000/api/users', {
+                firstName: formAllData.firstName,
+                middleName: formAllData.middleName,
+                lastName: formAllData.lastName,
+                gender: formAllData.gender,
+                birthday: new Date(formAllData.year, formAllData.month, formAllData.day),
+                streetAddress: formAllData.streetAddress,
+                city: formAllData.city,
+                country: formAllData.country,
+                tel: formAllData.tel,
+                email: formAllData.email,
+                password: formAllData.password
+            }).then(response => {
+                const token = response.data.accessToken;
+                localStorage.setItem('token', token);
+                navigate('/HomeLogIn');
+            })
+                .catch(error => {
+                    console.error('Error create account:', error);
+                });
         }
 
         setErrorTitle(newErrorTitle);

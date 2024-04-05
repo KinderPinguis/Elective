@@ -5,9 +5,9 @@ export interface FormAllData {
     middleName: string;
     lastName: string;
     gender: "male" | "female" | "nonBinary" | "";
-    dobYear: string;
-    dobMonth: string;
-    dobDate: string;
+    year: number;
+    month: number;
+    day: number;
     streetAddress: string;
     city: string;
     country: string;
