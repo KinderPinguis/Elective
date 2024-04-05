@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../Main.css'
+import  './Rating.css';
 interface RatingProps {
     className?: string;
     count: number;
