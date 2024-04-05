@@ -15,15 +15,15 @@ interface BasicInfoProps {
 }
 
 const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFormDataChange }) => {
-    const [formData, setFormData] = useState<{ firstName: string; middleName: string; lastName: string; gender: "male" | "female" | "nonBinary" | ""; dobYear: string; dobMonth: string; dobDate: string}>
+    const [formData, setFormData] = useState<{ firstName: string; middleName: string; lastName: string; gender: "male" | "female" | "nonBinary" | ""; year: number; month: number; day: number}>
     ({
         firstName: formAllData.firstName,
         middleName: formAllData.middleName,
         lastName: formAllData.lastName,
         gender : formAllData.gender,
-        dobYear: formAllData.dobYear,
-        dobMonth: formAllData.dobMonth,
-        dobDate: formAllData.dobDate,
+        year: formAllData.year,
+        month: formAllData.month,
+        day: formAllData.day,
     });
 
     const numberIconRef = useRef<HTMLDivElement>(null);
@@ -36,16 +36,16 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
         }
     };
 
-    const handleDobChange = (type: string, value: string) => {
+    const handleDobChange = (type: string, value: number) => {
         switch (type) {
-            case 'month':
-                setFormData({ ...formData, dobMonth: value, dobDate: '' });
-                break;
-            case 'date':
-                setFormData({ ...formData, dobDate: value });
-                break;
             case 'year':
-                setFormData({ ...formData, dobYear: value });
+                setFormData({ ...formData, year: value });
+                break;
+            case 'month':
+                setFormData({ ...formData, month: value, day: 0 });
+                break;
+            case 'day':
+                setFormData({ ...formData, day: value });
                 break;
             default:
                 break;
@@ -61,11 +61,11 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
     };
 
     const generateDateOptions = () => {
-        if (formData.dobMonth === '') {
+        if (formData.month === 0) {
             return [<option key="select-date" value="">Select Date</option>];
         }
 
-        const daysInMonth = new Date(parseInt(formData.dobYear), parseInt(formData.dobMonth), 0).getDate();
+        const daysInMonth = new Date(formData.year, formData.month, 0).getDate();
         const options = [];
         for (let i = 1; i <= daysInMonth; i++) {
             options.push(<option key={i} value={i}>{i}</option>);
@@ -74,7 +74,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
     };
 
     const nextStep = () => {
-        if (formData.firstName && formData.lastName && formData.dobDate) {
+        if (formData.firstName && formData.lastName && formData.day) {
             save();
             changeStep(1);
         }
@@ -99,7 +99,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
     };
 
     const lastStep = () => {
-        if (formData.firstName && formData.lastName && formData.dobDate) {
+        if (formData.firstName && formData.lastName && formData.day) {
             if (formAllData.streetAddress && formAllData.city && formAllData.country && formAllData.tel) {
                 save();
                 changeStep(2);
@@ -112,9 +112,9 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
         formAllData.middleName = formData.middleName;
         formAllData.lastName = formData.lastName;
         formAllData.gender = formData.gender;
-        formAllData.dobYear = formData.dobYear;
-        formAllData.dobMonth = formData.dobMonth;
-        formAllData.dobDate = formData.dobDate;
+        formAllData.year = formData.year;
+        formAllData.month = formData.month;
+        formAllData.day = formData.day;
         handleFormDataChange(formAllData);
     };
 
@@ -176,21 +176,21 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
             <Row id="birthDate" wrap={true} align={"middle"} justify={"center"}>
                 <Col span={7}>
                     <p>Year</p>
-                    <select value={formData.dobYear} onChange={(e) => handleDobChange('year', e.target.value)}>
+                    <select value={formData.year} onChange={(e) => handleDobChange('year', parseInt(e.target.value))}>
                         {generateOptions(1900, new Date().getFullYear())}
                     </select>
                 </Col>
                 <Col span={1}/>
                 <Col span={7}>
                     <p>Month</p>
-                    <select value={formData.dobMonth} onChange={(e) => handleDobChange('month', e.target.value)}>
+                    <select value={formData.month} onChange={(e) => handleDobChange('month', parseInt(e.target.value))}>
                         {generateOptions(1, 12)}
                     </select>
                 </Col>
                 <Col span={1}/>
                 <Col span={7}>
                     <p>Date</p>
-                    <select value={formData.dobDate} onChange={(e) => handleDobChange('date', e.target.value)}>
+                    <select value={formData.day} onChange={(e) => handleDobChange('day', parseInt(e.target.value))}>
                         {generateDateOptions()}
                     </select>
                 </Col>

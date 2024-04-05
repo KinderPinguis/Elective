@@ -5,6 +5,7 @@ import LogIn from './Page/LogIn'
 import CreateAccount from './Page/CreateAccount';
 import Terms from './Page/Terms';
 import Privacy from './Page/Privacy';
+import HomeLogIn from "./Page/HomeLogIn";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/CreateAccount" element={<CreateAccount/>} />
                 <Route path="/Privacy" element={<Privacy/>} />
                 <Route path="/Terms" element={<Terms/>} />
+                <Route path="/HomeLogIn" element={<HomeLogIn/>} />
             </Routes>
         </BrowserRouter>
     );

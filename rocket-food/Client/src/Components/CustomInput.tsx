@@ -8,9 +8,10 @@ interface CustomInputProps {
     placeholder?: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({ label, name, type, placeholder, value, onChange }) => {
+const CustomInput: React.FC<CustomInputProps> = ({ label, name, type, placeholder, value, onChange, onKeyPress }) => {
 
     return (
         <div id="customInput">
@@ -21,6 +22,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ label, name, type, placeholde
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
+                onKeyPress={onKeyPress}
             />
         </div>
     );
