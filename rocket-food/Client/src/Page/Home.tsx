@@ -14,6 +14,9 @@ import Footer from '../Components/Footer';
 
 function Home() {
     const [rating, setRating] = React.useState(0);
+
+
+
     return (
         <div className="Home">
             <header>

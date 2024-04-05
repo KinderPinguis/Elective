@@ -26,6 +26,14 @@ nav a:hover, nav a:hover *, nav a:active, nav a:active *{
     color: var(--color-primary);
 }
 
+.ButtonEditProfile * {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    height: 50px;
+}
+
+
 @media screen and (max-width: 768px) {
     header {
         position: relative;

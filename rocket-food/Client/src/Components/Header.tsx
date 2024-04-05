@@ -2,16 +2,31 @@ import React from 'react';
 import HomeButton from './HomeButton';
 import Button from './Button';
 import { FaSearch, FaShoppingCart, FaSignInAlt } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import { FiLogOut } from "react-icons/fi";
 import { Col, Row } from "antd";
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+    logIn?: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ logIn = true }) => {
 
     let navigate = useNavigate();
 
     const goToLogIn = () => {
         navigate("/LogIn");
+    };
+
+    const goToEditProfil = () => {
+        navigate("/EditProfile");
+    };
+
+    const logOut = () => {
+        localStorage.clear();
+        navigate("/");
     };
 
     return (
@@ -44,9 +59,20 @@ const Header: React.FC = () => {
                                     <Col flex={"auto"}>
                                         <li><a href="#"><FaShoppingCart/></a></li>
                                     </Col>
-                                    <Col flex={"auto"}>
-                                        <Button buttonImage={FaSignInAlt} buttonText="Login" onClick={goToLogIn}/>
-                                    </Col>
+                                    {logIn ? (
+                                        <>
+                                        <Col flex={"auto"} className="ButtonEditProfile">
+                                            <Button buttonImage={CgProfile} onClick={goToEditProfil}/>
+                                        </Col>
+                                        <Col flex={"auto"} className="ButtonEditProfile">
+                                            <Button buttonImage={FiLogOut} onClick={logOut}/>
+                                        </Col>
+                                        </>
+                                    ) : (
+                                        <div>
+                                            <Button buttonImage={FaSignInAlt} buttonText="Login" onClick={goToLogIn}/>
+                                        </div>
+                                    )}
                                 </Row>
                             </ul>
                         </nav>
