@@ -53,6 +53,14 @@
     content: "";
 }
 
+#rememberMe .ant-radio-checked .ant-radio-inner{
+    background-color: var(--color-secondary);
+}
+
+#rememberMe .ant-radio-inner{
+    border-color: var(--color-secondary);
+}
+
 @media screen and (max-width: 768px){
     #logIn{
         width: 90%;
