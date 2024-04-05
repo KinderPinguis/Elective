@@ -3,7 +3,7 @@ import HomeButton from './HomeButton';
 import Button from './Button';
 import { FaSearch, FaShoppingCart, FaSignInAlt } from "react-icons/fa";
 import { Col, Row } from "antd";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
 import '../Main.css'
 
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
                             <ul>
                                 <Row wrap={true} align={"middle"} justify={"center"}>
                                     <Col flex={"auto"} >
-                                        <li><a href="#">Why Rocket Food</a></li>
+                                        <li><Link to="/RocketFood">Why Rocket Food</Link></li>
                                     </Col>
                                     <Col flex={"auto"}>
                                         <li><a href="#">Services</a></li>
