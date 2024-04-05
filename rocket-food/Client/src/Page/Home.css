@@ -1,6 +1,6 @@
 #Title{
     color: var(--color-primary);
-    font-size: 36px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -16,8 +16,63 @@
 
 #ColInfos{
     text-align: center;
+    position: absolute;
 }
 
 img{
     width: 400px;
+}
+#LogoName{
+    color: var(--color-secondary-dark);
+    font-size: 25px;
+    font-weight: bold;
+}
+.review-container {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.text-right {
+    margin-left: 20px;
+}
+.get-app{
+        width: 800px;
+        height: 400px;
+        position: relative;
+        display: inline;
+        border-radius: 20px;
+        background-color: #f47b7b;
+}
+.get-app img{
+    float: right;
+    position: relative;
+    margin: 10px;
+    top: -50%;
+    right: 0;
+    transform: translateX(-5%);
+}
+
+.image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 400px;
+    height: 350px;
+}
+#Text{
+    position: relative;
+    transform: translateY(60%);
+    margin: 15px;
+}
+.review-image{
+    width: 400px;
+    height: 400px;
+    position: relative;
+    display: flex;
+}
+.review-container h3{
+    font-weight: bold;
+    margin-top: 300px;
+    transform: translateX(-60%);
 }
