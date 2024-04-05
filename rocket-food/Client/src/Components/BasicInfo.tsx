@@ -1,8 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { Row, Col, Radio, RadioChangeEvent  } from "antd";
+import customer from '../Image/AstroEatingNoBg.png';
+import restaurateur from '../Image/AstroChefNoBg.png';
+import delivery from '../Image/AstroDeliveryNoBg.png';
 import Button from './Button';
 import "./BasicInfo.css";
 import CustomInput from "./CustomInput";
+import RadioButtonImage from "./RadioButtonImage";
 import NumberIconH2 from "./NumberIconH2";
 import { FormAllData } from '../CustomTypes';
 import ErrorText from "./ErrorText";
@@ -15,8 +19,9 @@ interface BasicInfoProps {
 }
 
 const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFormDataChange }) => {
-    const [formData, setFormData] = useState<{ firstName: string; middleName: string; lastName: string; gender: "male" | "female" | "nonBinary" | ""; year: number; month: number; day: number}>
+    const [formData, setFormData] = useState<{ type:"customer" | "restaurateur" | "delivery"; firstName: string; middleName: string; lastName: string; gender: "male" | "female" | "nonBinary" | ""; year: number; month: number; day: number}>
     ({
+        type: formAllData.type,
         firstName: formAllData.firstName,
         middleName: formAllData.middleName,
         lastName: formAllData.lastName,
@@ -27,6 +32,10 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
     });
 
     const numberIconRef = useRef<HTMLDivElement>(null);
+
+    const handleRadioButtonClick = (type: "customer" | "restaurateur" | "delivery") => {
+        setFormData({ ...formData, type });
+    };
 
     const handleGenderChange = (e: RadioChangeEvent) => {
         if (e.target.value === "male" || e.target.value === "female" || e.target.value === "nonBinary") {
@@ -42,7 +51,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
                 setFormData({ ...formData, year: value });
                 break;
             case 'month':
-                setFormData({ ...formData, month: value, day: 0 });
+                setFormData({ ...formData, month: value, day: 1 });
                 break;
             case 'day':
                 setFormData({ ...formData, day: value });
@@ -61,7 +70,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
     };
 
     const generateDateOptions = () => {
-        if (formData.month === 0) {
+        if (formData.month === 1) {
             return [<option key="select-date" value="">Select Date</option>];
         }
 
@@ -108,6 +117,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
     };
 
     const save = () => {
+        formAllData.type = formData.type;
         formAllData.firstName = formData.firstName;
         formAllData.middleName = formData.middleName;
         formAllData.lastName = formData.lastName;
@@ -129,6 +139,14 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
                 <h3>*All fields required unless noted.</h3>
             </Row>
             <ErrorText errorTitle="Empty fields" errorText="Some required fields are not complete" />
+            <Row wrap={true} align={"middle"} justify={"start"}>
+                <p>*I am :</p>
+            </Row>
+            <Row id="radioButtonImage" wrap={true} align={"middle"} justify={"start"}>
+                <RadioButtonImage text="Customer" span={8} image={customer} lighted={formData.type != "customer"} onClick={() => handleRadioButtonClick("customer")} />
+                <RadioButtonImage text="Restaurateur" image={restaurateur} span={8} lighted={formData.type != "restaurateur"} onClick={() => handleRadioButtonClick("restaurateur")} />
+                <RadioButtonImage text="Delivery person" image={delivery} span={8} lighted={formData.type != "delivery"} onClick={() => handleRadioButtonClick("delivery")} />
+            </Row>
             <Row wrap={true} align={"middle"} justify={"start"}>
                 <CustomInput
                     label="*First name"
@@ -191,6 +209,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
                 <Col span={7}>
                     <p>Date</p>
                     <select value={formData.day} onChange={(e) => handleDobChange('day', parseInt(e.target.value))}>
+                        {generateOptions(1, 31)}
                         {generateDateOptions()}
                     </select>
                 </Col>

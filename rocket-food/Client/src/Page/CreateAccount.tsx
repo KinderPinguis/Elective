@@ -11,13 +11,14 @@ import {FormAllData} from '../CustomTypes'
 function CreateAccount() {
     const [currentStep, setCurrentStep] = useState(0);
     const [formAllData, setFormData] = useState<FormAllData>({
+        type: 'customer',
         firstName: '',
         middleName: '',
         lastName: '',
         gender: '',
         year: 1900,
-        month: 0,
-        day: 0,
+        month: 1,
+        day: 1,
         streetAddress: '',
         city: '',
         country: '',

@@ -2,6 +2,14 @@ const jwt = require('jsonwebtoken');
 const UserModel = require('../Models/UserModel');
 const bcrypt = require('bcrypt');
 
+const generateAccessToken = (userId) => {
+    return jwt.sign({ userId }, process.env.ACCESS_JWT_KEY, { expiresIn: '1h' });
+};
+
+const generateRefreshToken = (userId) => {
+    return jwt.sign({ userId }, process.env.REFRESH_JWT_KEY, { expiresIn: '1d' });
+};
+
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -17,9 +25,12 @@ exports.login = async (req, res) => {
             return res.status(401).json({ message: 'Wrong password' });
         }
 
-        const accessToken = jwt.sign({ userId: user._id }, process.env.ACCESS_JWT_KEY, { expiresIn: '1h' });
+        const userId = user._id;
+        const typeUser = user.type;
+        const accessToken = generateAccessToken(userId);
+        const refreshToken = generateRefreshToken(userId);
 
-        res.status(200).json({ message: "You are now connected !", accessToken });
+        res.status(200).json({ message: "You are now connected !", accessToken, refreshToken, userId, typeUser });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -27,11 +38,22 @@ exports.login = async (req, res) => {
 
 exports.createUser = async (req, res) => {
     try {
-        const { password } = req.body;
+        const { email, password } = req.body;
+        const user = await UserModel.findOne({ email: email });
+
+        if (user) {
+            return res.status(401).json({ message: 'Email already in use' });
+        }
         req.body.password = await bcrypt.hash(password, 10);
         const newUser = new UserModel(req.body);
         await newUser.save();
-        res.status(201).json(newUser);
+
+        const userId = user._id;
+        const userType = user.type;
+        const accessToken = generateAccessToken(userId);
+        const refreshToken = generateRefreshToken(userId);
+
+        res.status(200).json({ message: "You are now connected !", accessToken, refreshToken, userId, userType });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
