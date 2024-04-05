@@ -137,6 +137,7 @@ const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handle
             save();
 
             const response = await axios.post('http://localhost:3000/api/users', {
+                type: formAllData.type,
                 firstName: formAllData.firstName,
                 middleName: formAllData.middleName,
                 lastName: formAllData.lastName,
@@ -151,11 +152,16 @@ const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handle
             }).then(response => {
                 const token = response.data.accessToken;
                 localStorage.setItem('token', token);
-                navigate('/HomeLogIn');
+                navigate('/');
             })
-                .catch(error => {
-                    console.error('Error create account:', error);
-                });
+            .catch(error => {
+                const errorTextElement = document.getElementById('errorText');
+                if (errorTextElement) {
+                    errorTextElement.style.display = 'block';
+                }
+                newErrorTitle = "Create account failed";
+                newErrorText = error.response.data.message;
+            });
         }
 
         setErrorTitle(newErrorTitle);

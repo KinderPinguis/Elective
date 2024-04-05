@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface FormAllData {
+    type:"customer" | "restaurateur" | "delivery";
     firstName: string;
     middleName: string;
     lastName: string;

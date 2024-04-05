@@ -49,9 +49,12 @@ function LogIn() {
                 email: formData.email,
                 password: formData.password
             }).then(response => {
-                const token = response.data.accessToken;
-                localStorage.setItem('token', token);
-                navigate('/HomeLogIn');
+                const { accessToken, refreshToken, userId, typeUser } = response.data;
+                localStorage.setItem('accessToken', accessToken);
+                localStorage.setItem('refreshToken', refreshToken);
+                localStorage.setItem('userId', userId);
+                localStorage.setItem('typeUser', typeUser);
+                navigate('/');
             })
             .catch(error => {
                 const errorTextElement = document.getElementById('errorText');
