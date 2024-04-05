@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HomeButton from './HomeButton';
 import Button from './Button';
 import { FaSearch, FaShoppingCart, FaSignInAlt } from "react-icons/fa";
@@ -8,13 +8,21 @@ import { Col, Row } from "antd";
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
-interface HeaderProps {
-    logIn?: boolean;
-}
-
-const Header: React.FC<HeaderProps> = ({ logIn = true }) => {
-
+const Header: React.FC = () => {
     let navigate = useNavigate();
+    const [typeUser, setTypeUser] = useState<string | null>(localStorage.getItem('typeUser'));
+
+    useEffect(() => {
+        const handleUserTypeChange = () => {
+            setTypeUser(localStorage.getItem('typeUser'));
+        };
+
+        window.addEventListener('storage', handleUserTypeChange);
+
+        return () => {
+            window.removeEventListener('storage', handleUserTypeChange);
+        };
+    }, []);
 
     const goToLogIn = () => {
         navigate("/LogIn");
@@ -26,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ logIn = true }) => {
 
     const logOut = () => {
         localStorage.clear();
-        navigate("/");
+        navigate("/LogIn");
     };
 
     return (
@@ -59,14 +67,15 @@ const Header: React.FC<HeaderProps> = ({ logIn = true }) => {
                                     <Col flex={"auto"}>
                                         <li><a href="#"><FaShoppingCart/></a></li>
                                     </Col>
-                                    {logIn ? (
+                                    {typeUser ?
+                                        (
                                         <>
-                                        <Col flex={"auto"} className="ButtonEditProfile">
-                                            <Button buttonImage={CgProfile} onClick={goToEditProfil}/>
-                                        </Col>
-                                        <Col flex={"auto"} className="ButtonEditProfile">
-                                            <Button buttonImage={FiLogOut} onClick={logOut}/>
-                                        </Col>
+                                            <Col flex={"auto"} className="ButtonEditProfile">
+                                                <Button buttonImage={CgProfile} onClick={goToEditProfil}/>
+                                            </Col>
+                                            <Col flex={"auto"} className="ButtonEditProfile">
+                                                <Button buttonImage={FiLogOut} onClick={logOut}/>
+                                            </Col>
                                         </>
                                     ) : (
                                         <div>
