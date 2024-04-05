@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import './Home.css';
 import '../Main.css';
@@ -9,15 +10,19 @@ import PizzaRocket from '../Image/AstroRocketNoBg.png';
 import PizzaKing from '../Image/AstroKingNoBg.png';
 import RestaurantReview from '../Image/AstroReviewNoBg.png';
 import {Col, Row} from "antd";
-import Card from '../Components/Card';
-import DominosImg from '../Image/DominosPizza.jpeg';
-import PizzaImg from '../Image/PizzaHutjpeg.jpeg';
-
+import GetAppImg from '../Image/AppMobile_acceuil.png';
+import Button from "../Components/Button";
+import ManAvatar from "../Image/ManAvatar2.jpg";
 //import Footer from '../Components/Footer';
 
 
 function Home() {
     const [rating, setRating] = React.useState(0);
+    let navigate = useNavigate();
+
+    const goToPlayStore = () => {
+        navigate("www.play-store.com");
+    };
     return (
         <div className="Home">
             <header>
@@ -39,7 +44,7 @@ function Home() {
                     <h1 id={"Title"}>What we serve</h1>
                     <h1>Your Favorite Food<br/>Delivery Partner</h1>
                 </Col>
-                <Row>
+                <Row style={{marginTop: '150px'}}>
                     <Col style={{textAlign: 'center'}}>
                         <Col>
                             <img src={PizzaImage} alt="PizzaImage"/>
@@ -68,9 +73,11 @@ function Home() {
             </Row>
 
             <Row wrap={true} justify={'center'}>
-                <Col >
-                    <img src={RestaurantReview} alt="RestaurantReview"
-                         style={{width: '400px', height: '400px', position: 'relative'}}/>
+                <Col className={"review-image"}>
+                    <img src={RestaurantReview} alt="RestaurantReview"/>
+                </Col>
+                <Col className={"review-container"}>
+                   <h3>Our Reviewers</h3>
                 </Col>
                 <Col>
                     <h1 id={"Title"}>WHAT THEY SAY</h1>
@@ -78,7 +85,13 @@ function Home() {
                         What Our Costumer<br/>Say About Us
                     </h2>
                     <p>Rebum lorem no eos ut ipsum<br/>diam tempor sed rebum elitr ipsum<br/>diam tempor sed rebum elitr ipsum<br/>diam tempor sed rebum elitr ipsum</p>
-                    <Rating
+                    <Col className={"review-container"}>
+                        <img src={ManAvatar} alt= "ManAvatarReview" className={"RoundedImage"}/>
+                        <p className={"text-right"} style={{fontWeight: "bold", color:"#df7b07"}}>
+                            JOHN SMITH<span style={{display: "flex", fontWeight:"normal"}}>Food Enthusiast</span>
+                        </p>
+                    </Col>
+                        <Rating
                         count={5}
                         value={rating}
                         edit={true}
@@ -91,19 +104,21 @@ function Home() {
                 </Col>
             </Row>
             <Row wrap={true} justify={"center"}>
-                <Card
-                    title="Dominos Pizza"
-                    imageUrl={DominosImg}
-                    link="https://www.dominos.fr/"
-                />
-                <Card
-                    title="Pizza Hut"
-                    imageUrl={PizzaImg}
-                    link="https://www.dominos.fr/"
-                />
+                <Col className={'get-app'}>
+                    <Col id={"Text"}>
+                        <p style={{color: "#eb5757", fontWeight: "bold"}}>DOWNLOAD APP</p>
+                        <h2>Get Started With <br/>
+                            <span id={"LogoName"}>Rocket Food</span> Today!<br/>
+                        </h2>
+                        <p>Discover Rocket Food wherever and whenever <br/>and get your food delivered quickly.</p>
+                        <Button buttonText={"Download App"} onClick={goToPlayStore}></Button>
+                    </Col>
+                    <Col className={'get-app'}>
+                        <img src={GetAppImg} alt="Get App" className={"image-container"}/>
+                    </Col>
+                </Col>
             </Row>
             </body>
-
         </div>
     );
 }
