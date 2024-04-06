@@ -10,14 +10,13 @@ import PizzaRocket from '../Image/AstroRocketNoBg.png';
 import PizzaKing from '../Image/AstroKingNoBg.png';
 import RestaurantReview from '../Image/AstroReviewNoBg.png';
 import {Col, Row} from "antd";
-import GetAppImg from '../Image/AppMobile_acceuil.png';
+import GetAppImg from "../Image/AppMobile_accueil.png";
 import Button from "../Components/Button";
 import ManAvatar from "../Image/ManAvatar2.jpg";
 import WomananAvatar from "../Image/WomanAvatar.jpg";
 import ManAvatar1 from "../Image/ManAvatar.jpg";
 import signUp from "../Page/CreateAccount";
 //import Footer from '../Components/Footer';
-
 
 function Home() {
     let navigate = useNavigate();
