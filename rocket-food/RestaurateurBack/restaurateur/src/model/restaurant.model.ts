@@ -33,6 +33,18 @@ const restaurant = new mongoose.Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        required: false
+    },
+    password: {
+        type: String,
+        required: false
+    },
+    categories: {
+        type: [String],
+        required: true
+    }
 })
 
 const restaurantModel = mongoose.model('restaurant', restaurant, "restaurant");

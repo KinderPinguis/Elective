@@ -11,7 +11,10 @@ async function createRestaurant(req: Request, res: Response, next: NextFunction)
             city: req.body.city,
             creationDate: Date(),
             owner: req.body.owner,
-            phoneNumber: req.body.phoneNumber
+            phoneNumber: req.body.phoneNumber,
+            email: req.body.email,
+            password: req.body.password,
+            categories: req.body.categories
         });
         const saveRestaurant = await createRestaurant.save();
         res.status(200).json(saveRestaurant);
