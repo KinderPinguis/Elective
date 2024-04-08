@@ -1,21 +1,16 @@
 import mongoose from "mongoose";
-import {ObjectId} from "mongodb";
 
 const restaurant = new mongoose.Schema({
     nameRestaurant: {
         type: String,
         required: true
     },
-    streetNumber: {
-        type: Number,
-        required: true
-    },
-    street: {
+    streetAddress: {
         type: String,
         required: true
     },
-    postalCode: {
-        type: Number,
+    country: {
+        type: String,
         required: true
     },
     city: {
@@ -27,7 +22,7 @@ const restaurant = new mongoose.Schema({
         required: true
     },
     owner: {
-        type: ObjectId,
+        type: String,
         required: true
     },
     phoneNumber: {
@@ -43,7 +38,7 @@ const restaurant = new mongoose.Schema({
         required: false
     },
     categories: {
-        type: [String],
+        type: String,
         required: true
     }
 })

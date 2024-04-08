@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import RestaurantRouter from "./routes/restaurant.router";
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ const URI = `mongodb+srv://${User}:${Password}@cluster0.7skuvkx.mongodb.net/rest
 app.listen(PORT, () => {
     console.log(`Le serveur tourne sur ${PORT}`)
 })
+app.use(cors())
 
 
 async function DB_Connect() {
