@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import {ObjectId} from "mongodb";
 
 const restaurant = new mongoose.Schema({
     nameRestaurant: {
@@ -26,7 +27,7 @@ const restaurant = new mongoose.Schema({
         required: true
     },
     owner: {
-        type: String,
+        type: ObjectId,
         required: true
     },
     phoneNumber: {
