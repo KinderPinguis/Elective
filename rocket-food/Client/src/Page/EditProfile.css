@@ -1,0 +1,16 @@
+#editProfile {
+    width: 35%;
+    margin: 0 auto;
+}
+
+#imgProfile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: var(--color-primary) solid 5px;
+}
+
+#buttonUpdate *{
+    margin: 20px 0;
+    width: 100%;
+}

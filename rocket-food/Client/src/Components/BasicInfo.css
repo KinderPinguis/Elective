@@ -1,0 +1,40 @@
+#basicInfo {
+    padding: 0 50px;
+}
+
+#basicInfo h2{
+    color: var(--color-primary);
+}
+
+#button{
+    margin-bottom: 30px;
+}
+
+#button *{
+    width: 100%;
+}
+
+#gender {
+    margin-bottom: 20px;
+}
+
+#gender .ant-radio-checked .ant-radio-inner{
+    background-color: var(--color-secondary);
+}
+
+#gender .ant-radio-inner{
+    border-color: var(--color-secondary);
+}
+
+#birthDate {
+    margin-bottom: 50px;
+}
+
+#birthDate p{
+    text-align: start;
+}
+
+#birthDate select{
+    width: 100%;
+    color: var(--color-secondary);
+}

@@ -1,21 +1,27 @@
 import React from 'react';
 import './Card.css';
+import {Col, Row} from "antd";
+
 interface CardProps {
     title: string;
-    imageUrl: string;
-    link: string;
+    description : string;
+    image: string;
 }
 
-const Card: React.FC<CardProps> = ({ title, imageUrl, link }) => {
+const Card: React.FC<CardProps> = ({ title, image, description}) => {
     return (
         <div className="card">
-            <div className="image-container">
-                <img src={imageUrl} alt={title} />
-                <div className="text-container">
-                    <h2>{title}</h2>
-                    <a href={link}>Order Now</a>
-                </div>
-            </div>
+            <Row>
+                <Col span={"13"}>
+                    <div className="image-container">
+                        <img src={image} alt={title}/>
+                        <div className="text-container">
+                            <h2>{title}</h2>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                </Col>
+            </Row>
         </div>
     );
 };

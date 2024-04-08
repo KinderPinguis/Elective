@@ -1,17 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HomeButton from './HomeButton';
 import Button from './Button';
 import { FaSearch, FaShoppingCart, FaSignInAlt } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import { FiLogOut } from "react-icons/fi";
 import { Col, Row } from "antd";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
-import '../Main.css'
 
 const Header: React.FC = () => {
-
     let navigate = useNavigate();
+    const [typeUser, setTypeUser] = useState<string | null>(localStorage.getItem('typeUser'));
+
+    useEffect(() => {
+        const handleUserTypeChange = () => {
+            setTypeUser(localStorage.getItem('typeUser'));
+        };
+
+        window.addEventListener('storage', handleUserTypeChange);
+
+        return () => {
+            window.removeEventListener('storage', handleUserTypeChange);
+        };
+    }, []);
 
     const goToLogIn = () => {
+        navigate("/LogIn");
+    };
+
+    const goToEditProfil = () => {
+        navigate("/EditProfile");
+    };
+
+    const logOut = () => {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("typeUser");
         navigate("/LogIn");
     };
 
@@ -28,7 +53,7 @@ const Header: React.FC = () => {
                             <ul>
                                 <Row wrap={true} align={"middle"} justify={"center"}>
                                     <Col flex={"auto"} >
-                                        <li><a href="#">Why Rocket Food</a></li>
+                                        <li><Link to="/RocketFood">Why Rocket Food</Link></li>
                                     </Col>
                                     <Col flex={"auto"}>
                                         <li><a href="#">Services</a></li>
@@ -45,9 +70,21 @@ const Header: React.FC = () => {
                                     <Col flex={"auto"}>
                                         <li><a href="#"><FaShoppingCart/></a></li>
                                     </Col>
-                                    <Col flex={"auto"}>
-                                        <Button buttonImage={FaSignInAlt} onClick={goToLogIn}/>
-                                    </Col>
+                                    {typeUser ?
+                                        (
+                                        <>
+                                            <Col flex={"auto"} className="ButtonEditProfile">
+                                                <Button buttonImage={CgProfile} onClick={goToEditProfil}/>
+                                            </Col>
+                                            <Col flex={"auto"} className="ButtonEditProfile">
+                                                <Button buttonImage={FiLogOut} onClick={logOut}/>
+                                            </Col>
+                                        </>
+                                    ) : (
+                                        <div>
+                                            <Button buttonImage={FaSignInAlt} buttonText="Login" onClick={goToLogIn}/>
+                                        </div>
+                                    )}
                                 </Row>
                             </ul>
                         </nav>

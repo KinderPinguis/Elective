@@ -47,12 +47,27 @@ h3 {
     color: var(--color-black);
 }
 
+.LinkUnderline{
+    color: var(--color-black);
+    text-decoration: underline;
+    display: inline-block;
+}
+
+h3 .LinkUnderline{
+    font-family: var(--font-family-heading);
+    font-size: 18px;
+}
+
+.LinkUnderline:hover {
+    cursor: pointer;
+    color: var(--color-primary)!important;
+}
+
 .RoundedImage {
     width: 100px;
     height: 100px;
     border-radius: 50%;
 }
-
 
 body {
     padding-top: 80px;
@@ -78,12 +93,15 @@ body {
     -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
-    -user-select: none; /* Non-prefixed version, currently*/
+    user-select: none; /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
 }
+
 
 @media screen and (max-width: 768px){
     body {
         padding-top: 0;
     }
 }
+
 
