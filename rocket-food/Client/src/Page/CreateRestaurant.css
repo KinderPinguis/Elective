@@ -1,0 +1,29 @@
+#createRestaurant {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.CustomSteps{
+    margin: 30px 0;
+}
+
+.CustomStep:hover{
+    cursor: pointer;
+}
+
+.ant-steps-item-active .ant-steps-item-icon, .ant-steps-item-finish .ant-steps-item-icon{
+    background-color: var(--color-primary)!important;
+    border-color: var(--color-primary)!important;
+}
+
+.ant-steps-item-active .ant-steps-item-title, .ant-steps-item-finish .ant-steps-item-title{
+    color: var(--color-primary)!important;
+}
+
+.ant-steps-item-finish .ant-steps-item-tail:after{
+    background-color: var(--color-primary)!important;
+}
+
+.ant-steps-icon path{
+    color: var(--color-white);
+}

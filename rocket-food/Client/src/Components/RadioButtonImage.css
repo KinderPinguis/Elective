@@ -1,0 +1,13 @@
+.RadioButtonImage img{
+    width: 130px;
+    height: 130px;
+}
+
+.lighted {
+    opacity: 0.5;
+}
+
+.lighted:hover {
+    opacity: 1;
+    cursor: pointer;
+}
