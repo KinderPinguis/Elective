@@ -48,8 +48,8 @@ exports.createUser = async (req, res) => {
         const newUser = new UserModel(req.body);
         await newUser.save();
 
-        const userId = user._id;
-        const userType = user.type;
+        const userId = newUser._id;
+        const userType = newUser.type;
         const accessToken = generateAccessToken(userId);
         const refreshToken = generateRefreshToken(userId);
 
