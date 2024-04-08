@@ -31,7 +31,7 @@ function EditProfile() {
             </header>
             <body id="editProfile" className="NoSelect">
                 <Row wrap={true} align={"middle"} justify={"center"}>
-                    <img id="imgProfile" src={AstroProfilNoBg}/>
+                    <img id="imgProfile" alt"" src={AstroProfilNoBg}/>
                 </Row>
                 <Row wrap={true} align={"middle"} justify={"start"}>
                     <Col span={8}>
