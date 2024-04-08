@@ -15,6 +15,7 @@ import Button from "../Components/Button";
 import ManAvatar from "../Image/ManAvatar2.jpg";
 import WomananAvatar from "../Image/WomanAvatar.jpg";
 import ManAvatar1 from "../Image/ManAvatar.jpg";
+import AstroBoba from "../Image/AstroBoba.jpg";
 import signUp from "../Page/CreateAccount";
 //import Footer from '../Components/Footer';
 
@@ -32,46 +33,53 @@ function Home() {
             <body>
             <Row wrap={true} justify={"center"}>
                 <Col span={16}>
-                    <h1>
+                    <h1 style={{fontWeight:'bold', fontSize:'80px'}}>
                         Be The Fastest <br/>In Delivering<br/> Your <span id={"Title"}>Food</span>
                     </h1>
                     <Button buttonText={"Get Started"} onClick={signUp}></Button>
+                    <Col className={"review-container"}>
+                        <img src={AstroBoba} alt= "AstroBoba" style={{width:"50px", height:"50px", borderRadius:"50%"}}/>
+                        <p className={"text-right"} style={{fontWeight: "bold"}}>
+                            Our Happy Customer <br/>
+                            <Rating count={1}></Rating> 4,7
+                            <span style={{textAlign:'left', color:'#df7b07'}}> (27.4k Review)</span>
+                        </p>
+                    </Col>
+                    <p>Our job is filling your tummy with delicious food <br/> and with fast and free delivery</p>
                 </Col>
                 <Col>
                     <img src={PizzaMan} alt="PizzaMan" className="RoundedImage" id={"PizzaMan"}/>
                 </Col>
             </Row>
-            <Row wrap={true} justify={"center"}>
-                <Col id={"ColInfos"}>
-                    <h1 id={"Title"}>What we serve</h1>
-                    <h1>Your Favorite Food<br/>Delivery Partner</h1>
+            <Row justify="space-around" style={{ width: '100%', margin: 0 }}>
+                <Col id="ColInfos">
+                    <h3 style={{color:'#eb5757'}}>What we serve</h3>
+                    <h1>Your Favorite Food<br />Delivery Partner</h1>
                 </Col>
-                <Row style={{marginTop: '170px'}}>
-                    <Col style={{textAlign: 'center'}}>
+                <Row gutter={[112, 8]} style={{ marginTop: '190px' }}>
+                    <Col flex="1" style={{ textAlign: 'center' }}>
                         <Col>
-                            <img src={PizzaImage} alt="PizzaImage" style={{width: "100px", height: "100px"}}/>
-                            <h2 id={"SubTitle"}>Best Quality</h2>
+                            <img src={PizzaImage} alt="PizzaImage" style={{ width: "100px", height: "100px" }} />
+                            <h2 id="SubTitle">Best Quality</h2>
                             <p>Rebum lorem no eos ut ipsum</p>
                             <p>diam tempor sed rebum elitr ipsum</p>
                         </Col>
                     </Col>
-                    <Col style={{textAlign: 'center'}}>
+                    <Col flex="1" style={{ textAlign: 'center' }}>
                         <Col>
-                            <img src={PizzaRocket} alt="PizzaRocket" style={{width: "100px", height: "100px"}}/>
-                            <h2 id={"SubTitle"}>Best Quality</h2>
+                            <img src={PizzaRocket} alt="PizzaRocket" style={{ width: "100px", height: "100px" }} />
+                            <h2 id="SubTitle">Best Quality</h2>
                             <p>Rebum lorem no eos ut ipsum</p>
                             <p>diam tempor sed rebum elitr ipsum</p>
                         </Col>
-
                     </Col>
-                    <Col style={{textAlign: 'center'}}>
+                    <Col flex="1" style={{ textAlign: 'center' }}>
                         <Col>
-                            <img src={PizzaKing} alt="PizzaKing" style={{width: "100px", height: "100px"}}/>
-                            <h2 id={"SubTitle"}>Best Quality</h2>
+                            <img src={PizzaKing} alt="PizzaKing" style={{ width: "100px", height: "100px" }} />
+                            <h2 id="SubTitle">Best Quality</h2>
                             <p>Rebum lorem no eos ut ipsum</p>
                             <p>diam tempor sed rebum elitr ipsum</p>
                         </Col>
-
                     </Col>
                 </Row>
             </Row>
@@ -89,9 +97,9 @@ function Home() {
                         <button className="review-button">28k+</button>
                     </Col>
                 </Col>
-                <Col>
-                    <h1 id={"Title"}>WHAT THEY SAY</h1>
-                    <h2>
+                <Col style={{marginLeft:'40px'}}>
+                    <p style={{fontWeight:'bold', color:'#eb5757', marginTop: '50px'}}>WHAT THEY SAY</p>
+                    <h2 id={'Heading'}>
                         What Our Costumer<br/>Say About Us
                     </h2>
                     <p>Rebum lorem no eos ut ipsum<br/>diam tempor sed rebum elitr ipsum<br/>diam tempor sed rebum elitr
@@ -111,9 +119,9 @@ function Home() {
                 <Col className={'get-app'}>
                     <Col id={"Text"}>
                         <p style={{color: "#eb5757", fontWeight: "bold"}}>DOWNLOAD APP</p>
-                        <h2>Get Started With <br/>
+                        <h1>Get Started With <br/>
                             <span id={"LogoName"}>Rocket Food</span> Today!<br/>
-                        </h2>
+                        </h1>
                         <p>Discover Rocket Food wherever and whenever <br/>and get your food delivered quickly.</p>
                         <Button buttonText={"Download App"} onClick={goToPlayStore}></Button>
                     </Col>
