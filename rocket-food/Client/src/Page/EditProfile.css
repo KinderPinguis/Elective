@@ -1,0 +1,11 @@
+#editProfile {
+    width: 25%;
+    margin: 0 auto;
+}
+
+#imgProfile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: var(--color-primary) solid 5px;
+}
