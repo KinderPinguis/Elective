@@ -3,7 +3,7 @@ const UserModel = require('../Models/UserModel');
 const bcrypt = require('bcrypt');
 
 const generateAccessToken = (userId) => {
-    return jwt.sign({ userId }, process.env.ACCESS_JWT_KEY, { expiresIn: '1h' });
+    return jwt.sign({ userId }, process.env.ACCESS_JWT_KEY, { expiresIn: '10min' });
 };
 
 const generateRefreshToken = (userId) => {
@@ -58,6 +58,25 @@ exports.createUser = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+
+exports.refreshToken = async (req, res) => {
+    try {
+        const refreshToken = req.body.refreshToken;
+        if (!refreshToken) {
+            return res.status(400).json({ message: 'Refresh token is required' });
+        }
+
+        const decoded = jwt.verify(refreshToken, process.env.REFRESH_JWT_KEY);
+        const userId = decoded.userId;
+
+        const accessToken = generateAccessToken(userId);
+
+        res.status(200).json({ accessToken });
+    } catch (error) {
+        res.status(401).json({ message: 'Invalid refresh token' });
+    }
+};
+
 
 exports.getUsers = async (req, res) => {
     try {

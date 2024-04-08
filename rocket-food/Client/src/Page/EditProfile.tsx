@@ -6,6 +6,7 @@ import { Col, Row } from "antd";
 import './EditProfile.css'
 import CustomInput from "../Components/CustomInput";
 import Button from "../Components/Button";
+import { isTokenExpired, refreshToken } from '../MainFonction';
 import axios from 'axios';
 
 function EditProfile() {
@@ -24,11 +25,16 @@ function EditProfile() {
     const fetchUserData = async () => {
         try {
             const userId = localStorage.getItem('userId');
-            const accessToken = localStorage.getItem('accessToken');
+            let accessToken = localStorage.getItem('accessToken');
 
             if (!userId || !accessToken) {
                 console.error('User ID or Access token is missing');
                 return;
+            }
+
+            if (isTokenExpired(accessToken)) {
+                await refreshToken("http://localhost:3000");
+                accessToken = localStorage.getItem('accessToken');
             }
 
             const response = await axios.get(`http://localhost:3000/api/users/${userId}`, {
@@ -52,11 +58,16 @@ function EditProfile() {
     const onClickUpdate = async () => {
         try {
             const userId = localStorage.getItem('userId');
-            const accessToken = localStorage.getItem('accessToken');
+            let accessToken = localStorage.getItem('accessToken');
 
             if (!userId || !accessToken) {
                 console.error('User ID or Access token is missing');
                 return;
+            }
+
+            if (isTokenExpired(accessToken)) {
+                await refreshToken("http://localhost:3000");
+                accessToken = localStorage.getItem('accessToken');
             }
 
             await axios.put(`http://localhost:3000/api/users/${userId}`, formData, {
