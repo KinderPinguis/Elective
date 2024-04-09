@@ -1,0 +1,16 @@
+#homeDelivery {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.SwitchDelivery{
+    align-items: end;
+}
+
+.SwitchDelivery .ant-switch-checked {
+    background-color: var(--color-succes)!important;
+}
+
+.SwitchDelivery .ant-switch {
+    background-color: var(--color-error)
+}

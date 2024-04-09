@@ -49,11 +49,11 @@ exports.createUser = async (req, res) => {
         await newUser.save();
 
         const userId = newUser._id;
-        const userType = newUser.type;
+        const typeUser = newUser.type;
         const accessToken = generateAccessToken(userId);
         const refreshToken = generateRefreshToken(userId);
 
-        res.status(200).json({ message: "You are now connected !", accessToken, refreshToken, userId, userType });
+        res.status(200).json({ message: "You are now connected !", accessToken, refreshToken, userId, typeUser });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
