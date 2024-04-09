@@ -1,4 +1,0 @@
-PORT=3000
-MONGODB_URI=mongodb+srv://admin:admin@cluster0.7skuvkx.mongodb.net/users?retryWrites=true&w=majority&appName=Cluster0
-ACCESS_JWT_KEY=X8s7dfj39Dn0kE4mY5rP2qVpGt8wGh
-REFRESH_JWT_KEY=ZtS3mE9zCp9YpAe5fDwGvRyTbWe4Xq6c

@@ -18,7 +18,7 @@ function Home() {
                     <Header/>
                 </header>
                 <body>
-                <HomeNotLogIn/>
+                    <HomeNotLogIn/>
                 </body>
                 <footer>
                     <Footer/>
@@ -35,7 +35,7 @@ function Home() {
                         <Header/>
                     </header>
                     <body>
-                    <HomeCustomer/>
+                        <HomeCustomer/>
                     </body>
                     <footer>
                         <Footer/>
@@ -49,7 +49,7 @@ function Home() {
                         <Header/>
                     </header>
                     <body>
-                    <HomeRestaurateur/>
+                        <HomeRestaurateur/>
                     </body>
                     <footer>
                         <Footer/>
@@ -63,7 +63,7 @@ function Home() {
                         <Header/>
                     </header>
                     <body>
-                    <HomeDelivery/>
+                        <HomeDelivery/>
                     </body>
                     <footer>
                         <Footer/>
@@ -77,7 +77,7 @@ function Home() {
                         <Header/>
                     </header>
                     <body>
-                    <HomeNotLogIn/>
+                        <HomeNotLogIn/>
                     </body>
                     <footer>
                         <Footer/>
