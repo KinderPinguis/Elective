@@ -5,7 +5,7 @@ interface RatingProps {
     className?: string;
     count: number;
     color?: string;
-    value?: string;
+    value: number;
     size?: number;
 }
 interface FullStarProps {
@@ -32,6 +32,7 @@ const FullStar: React.FC<FullStarProps> = ({
 const Rating: React.FC<RatingProps> = ({
                                            className,
                                            count,
+                                           value,
                                            color = "#ffd700",
                                            size = 20,
                                        }) => {
