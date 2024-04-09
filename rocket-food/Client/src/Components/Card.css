@@ -15,12 +15,15 @@
 
 .text-container {
     position: absolute;
-    bottom: 10px;
+    bottom: 2px;
     left: 10px;
-    color: #f4f4f4;
     text-align: left;
 }
 
-.link {
-    color: #f4f4f4;
+.text-container h2{
+    background-color: var(--color-black);
+    color: var(--color-primary);
+    border-radius: 5px;
 }
+
+

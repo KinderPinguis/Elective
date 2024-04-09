@@ -1,0 +1,8 @@
+#errorText {
+    display: none;
+    width: 100%;
+    color: var(--color-error)!important;
+    border: 2px solid var(--color-error);
+    padding: 20px;
+    box-shadow: 0 0 5px var(--color-error);
+}

@@ -1,0 +1,15 @@
+#restaurantInfo {
+    padding: 0 50px;
+}
+
+#restaurantInfo h2{
+    color: var(--color-primary);
+}
+
+#button{
+    margin-bottom: 30px;
+}
+
+#button *{
+    width: 100%;
+}

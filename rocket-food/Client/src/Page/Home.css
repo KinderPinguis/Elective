@@ -95,6 +95,7 @@ img{
     margin: 10px;
     top: -50%;
     right: 0;
+
     transform: translateX(-10%);
 }
 #Text{

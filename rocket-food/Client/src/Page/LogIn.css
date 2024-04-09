@@ -27,11 +27,6 @@
     color: var(--color-secondary);
 }
 
-#hidden * {
-    display: inline;
-    color: var(--color-gray)!important;
-}
-
 .ButtonLogIn * {
     width: 100%;
     margin: 20px 0;
@@ -40,20 +35,6 @@
 #agreeText p, #optionText a {
     color: var(--color-black);
     margin-bottom: 50px;
-}
-
-#agreeText a {
-    color: var(--color-black);
-}
-
-#optionText a, #agreeText a {
-    text-decoration: underline;
-    display: inline-block;
-}
-
-#optionText a:hover, #agreeText a:hover {
-    cursor: pointer;
-    color: var(--color-primary);
 }
 
 #newText p{
