@@ -1,13 +1,16 @@
 #Title{
     color: var(--color-primary);
-    font-size: 30px;
+    font-size: 80px;
     font-weight: bold;
 }
 
 #SubTitle{
     color: var(--color-secondary-dark);
 }
-
+#Heading{
+    font-size: 36px;
+    font-weight: bolder;
+}
 #PizzaMan{
     width: 200px;
     height: 200px;
@@ -24,21 +27,63 @@ img{
 }
 #LogoName{
     color: var(--color-secondary-dark);
-    font-size: 25px;
+    font-size: 40px;
     font-weight: bold;
 }
 .review-container {
     display: flex;
     align-items: center;
     text-align: left;
-}
 
+}
+.review-image{
+    width: 500px;
+    height: 400px;
+    position: relative;
+    display: flex;
+}
+.review-container h3{
+    font-weight: bold;
+    margin-top: 230px;
+    transform: translateX(-150%);
+}
+.image-review {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: -10px;
+    transform: translateY(370%);
+}
+.review-button {
+    background-color: #ce3535;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: -10px;
+    transform: translateY(370%);
+}
+.review{
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 40px;
+    position: absolute;
+    transform: translateX(-150%);
+}
+.image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 400px;
+    height: 472px;
+}
 .text-right {
     margin-left: 20px;
 }
+
 .get-app{
-        width: 800px;
-        height: 400px;
+        width: 1000px;
+        height: 500px;
         position: relative;
         display: inline;
         border-radius: 20px;
@@ -50,29 +95,11 @@ img{
     margin: 10px;
     top: -50%;
     right: 0;
-    transform: translateX(-5%);
-}
 
-.image-container {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    width: 400px;
-    height: 350px;
+    transform: translateX(-10%);
 }
 #Text{
     position: relative;
-    transform: translateY(60%);
-    margin: 15px;
-}
-.review-image{
-    width: 400px;
-    height: 400px;
-    position: relative;
-    display: flex;
-}
-.review-container h3{
-    font-weight: bold;
-    margin-top: 300px;
-    transform: translateX(-60%);
+    transform: translateY(50%);
+    margin-left: 60px;
 }
