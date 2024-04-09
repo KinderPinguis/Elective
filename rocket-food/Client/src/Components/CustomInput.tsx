@@ -6,7 +6,7 @@ interface CustomInputProps {
     name: string;
     type: string;
     placeholder?: string;
-    value: string;
+    value: any;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }

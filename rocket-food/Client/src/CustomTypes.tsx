@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface FormAllData {
     type:"customer" | "restaurateur" | "delivery";
     firstName: string;
@@ -17,4 +15,19 @@ export interface FormAllData {
     confirmEmail: string;
     password: string;
     confirmPassword: string
+}
+
+export interface restaurantData {
+    nameRestaurant: string;
+    streetAddress:  string;
+    country: string;
+    city: string;
+    creationDate: Date;
+    owner: string;
+    phoneNumber: string;
+    email: string;
+    confirmEmail: string;
+    password: string;
+    confirmPassword: string;
+    categories: string;
 }

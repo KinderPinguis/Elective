@@ -1,32 +1,32 @@
 import React, {useState, useRef} from 'react';
 import { Col, Row } from "antd";
 import Button from './Button'
-import "./LogInInfo.css"
+import "./RestaurantLogInInfo.css"
 import { useNavigate } from 'react-router-dom';
 import CustomInput from "./CustomInput";
 import InputPassword from "./PasswordInput";
 import NumberIconH2 from "./NumberIconH2";
-import {FormAllData} from '../CustomTypes'
+import {restaurantData} from '../CustomTypes'
 import ErrorText from "./ErrorText";
 import {toggleErrorClass} from '../MainFonction'
 import axios from "axios";
 
-interface LogInInfoProps {
-    formAllData: FormAllData;
+interface RestaurantLogInInfoProps {
+    restaurantData: restaurantData;
     changeStep: (step: number) => void;
-    handleFormDataChange: (data: FormAllData) => void;
+    handleFormDataChange: (data: restaurantData) => void;
 }
 
-const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handleFormDataChange }) => {
+const ContactInfo: React.FC<RestaurantLogInInfoProps> = ({ restaurantData, changeStep, handleFormDataChange }) => {
 
     let navigate = useNavigate();
 
     const [formData, setFormData] = useState<{ email: string; confirmEmail: string; password: string; confirmPassword: string }>
     ({
-        email: formAllData.email,
-        confirmEmail: formAllData.confirmEmail,
-        password: formAllData.password,
-        confirmPassword: formAllData.confirmPassword,
+        email: restaurantData.email,
+        confirmEmail: restaurantData.confirmEmail,
+        password: restaurantData.password,
+        confirmPassword: restaurantData.confirmPassword,
     });
 
     const numberIconRef = useRef<HTMLDivElement>(null);
@@ -133,35 +133,31 @@ const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handle
         }
 
         else
+
         {
             save();
 
-            const response = await axios.post('http://localhost:3000/api/users', {
-                type: formAllData.type,
-                firstName: formAllData.firstName,
-                middleName: formAllData.middleName,
-                lastName: formAllData.lastName,
-                gender: formAllData.gender,
-                birthday: new Date(formAllData.year, formAllData.month, formAllData.day),
-                streetAddress: formAllData.streetAddress,
-                city: formAllData.city,
-                country: formAllData.country,
-                tel: formAllData.tel,
-                email: formAllData.email,
-                password: formAllData.password
+            await axios.post('http://localhost:5000/restaurant/create', {
+                nameRestaurant: restaurantData.nameRestaurant,
+                streetAddress: restaurantData.streetAddress,
+                country: restaurantData.country,
+                city: restaurantData.city,
+                creationDate: new Date(),
+                owner: restaurantData.owner,
+                phoneNumber: restaurantData.phoneNumber,
+                email: restaurantData.email,
+                password: restaurantData.password,
+                categories: restaurantData.categories
             }).then(response => {
-                const token = response.data.accessToken;
-                localStorage.setItem('token', token);
-                navigate('/');
+                navigate('/RestaurantPage');
             })
-            .catch(error => {
-                const errorTextElement = document.getElementById('errorText');
-                if (errorTextElement) {
-                    errorTextElement.style.display = 'block';
-                }
-                newErrorTitle = "Create account failed";
-                newErrorText = error.response.data.message;
-            });
+                .catch(error => {
+                    const errorTextElement = document.getElementById('errorText');
+                    if (errorTextElement) {
+                        errorTextElement.style.display = 'block';
+                    }
+                    newErrorTitle = "Restaurant creation failed";
+                });
         }
 
         setErrorTitle(newErrorTitle);
@@ -173,18 +169,18 @@ const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handle
     }
 
     const save = () => {
-        formAllData.email = formData.email;
-        formAllData.confirmEmail = formData.confirmEmail;
-        formAllData.password = formData.password;
-        formAllData.confirmPassword = formData.confirmPassword;
-        handleFormDataChange(formAllData);
+        restaurantData.email = formData.email;
+        restaurantData.confirmEmail = formData.confirmEmail;
+        restaurantData.password = formData.password;
+        restaurantData.confirmPassword = formData.confirmPassword;
+        handleFormDataChange(restaurantData);
     }
 
     return (
-        <div id="logInInfo">
-            <NumberIconH2 numberIcone={1} h2Text="Basic info" lighted={true} onClick={firstStep}/>
-            <NumberIconH2 numberIcone={2} h2Text="Contact info" lighted={true} onClick={prevStep}/>
-            <NumberIconH2 numberIcone={3} h2Text="Login info" ref={numberIconRef}/>
+        <div id="restaurantLogInInfo">
+            <NumberIconH2 numberIcone={1} h2Text="Restaurant info" lighted={true} onClick={firstStep}/>
+            <NumberIconH2 numberIcone={2} h2Text="Restaurant Contact info" lighted={true} onClick={prevStep}/>
+            <NumberIconH2 numberIcone={3} h2Text="Restaurant Login info" ref={numberIconRef}/>
             <Row wrap={true} align={"middle"} justify={"start"} >
                 <h3>*All fields required unless noted.</h3>
             </Row>
