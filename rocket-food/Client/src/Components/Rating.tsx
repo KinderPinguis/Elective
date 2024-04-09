@@ -1,21 +1,24 @@
 import React from "react";
 import './Rating.css';
 
+enum starColor{
+    full="#ffd700",
+    half="#a3a3a3",
+}
 interface RatingProps {
     className?: string;
     count: number;
-    color?: string;
-    value: number;
+    color?: starColor;
     size?: number;
 }
 interface FullStarProps {
     size?: number;
-    color?: string;
+    color?: starColor;
 }
 
 const FullStar: React.FC<FullStarProps> = ({
                                                size = 20,
-                                               color = "#ffd700",
+                                               color = starColor.full,
                                            }) => {
     return (
         <div style={{ color: color }}>
@@ -32,15 +35,16 @@ const FullStar: React.FC<FullStarProps> = ({
 const Rating: React.FC<RatingProps> = ({
                                            className,
                                            count,
-                                           value,
-                                           color = "#ffd700",
                                            size = 20,
                                        }) => {
     return (
         <div className={`rating ${className}`}>
-            {[...Array(count)].map((_, index) => (
-                <FullStar key={index} size={size} color={color} />
-            ))}
+            {[...Array(5)].map((_, index) => {
+                if(index < count){
+                    return <FullStar key={index} size={size}/>
+                }
+                return <FullStar key={index} size={size} color={starColor.half}/>
+            })}
         </div>
     );
 };

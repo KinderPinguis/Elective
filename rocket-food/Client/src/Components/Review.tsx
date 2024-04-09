@@ -1,38 +1,21 @@
-/*import Rating from './Rating';
+import {Col} from "antd";
+import Rating from "./Rating";
+import React from "react";
 
-const Reviewpage = () => {
-
-    const { reviewIndex, setReviewIndex } = useSate(0)
-
-    const reviewsData = [{ name: "JOHN SMITH", image: "/images/eeedd.jpg", description:"Food Enthousiast", rating:4}, { name: "ANNE-MARIE", image: "/images/eeedd.jpg", description:"Vegan", rating: 3}, {name: "BRYAN FREYER", image: "/images/eeedd.jpg", description:"Burger Lover", rating:5}]
-
-
-    const moveToBack = () => {
-        if (reviewIndex > 0) {
-            setReviewIndex(reviewIndex - 1)
-        }
-    }
-
-    const moveToNext = () => {
-        if (reviewIndex <= 0 && reviewIndex < reviewsData.length) {
-            setReviewIndex(reviewIndex + 1)
-        }
-    }
-
-    return (
+type ReviewProps={name: string, image: string, description:string, rating:number}
+const Review : React.FC<ReviewProps>=({ name, image,description,rating}) => {
+    return(
         <div>
-            <Review
-                name={reviewsData[reviewIndex].name}
-                image={reviewsData[reviewIndex].image}
-                reviewsData[reviewIndex].description
-            />
-            <Rating count={5} value={reviewsData[reviewIndex].rating} />
-            <Button buttonImage={FaAngleLeft} onClick={moveToBack}/>
-            <Button buttonImage={FaAngleRight} onClick={moveToNext}/>
+        <Col className={"review-container"}>
+            <img src={image} alt= "ManAvatarReview" style={{width:"50px", height:"50px", borderRadius:"50%"}}/>
+            <p className={"text-right"} style={{color:"#df7b07"}}>
+                {name}<span style={{display: "flex", fontWeight:"normal"}}>{description}</span>
+            </p>
+        </Col>
+        <Col>
+            <Rating count={rating} size={20}/>
+        </Col>
         </div>
-    );
+);
 };
-
-export default ReviewPage;  */
-
-export {}
+ export default Review;

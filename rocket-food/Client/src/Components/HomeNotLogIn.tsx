@@ -10,6 +10,7 @@ import Button from "./Button";
 import GetAppImg from "../Image/AppMobile_accueil.png";
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import './HomeNotLogIn.css';
 
 const HomeNotLogIn: React.FC = () => {
     const [rating, setRating] = React.useState(0);
@@ -116,11 +117,10 @@ const HomeNotLogIn: React.FC = () => {
 export default HomeNotLogIn;*/
 
 
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import '../Main.css';
-import Rating from '../Components/Rating';
 import PizzaMan from '../Image/AstroPizzaRed.png';
 import PizzaImage from '../Image/AstroEasyNoBg.png';
 import PizzaRocket from '../Image/AstroRocketNoBg.png';
@@ -134,16 +134,34 @@ import WomananAvatar from "../Image/WomanAvatar.jpg";
 import ManAvatar1 from "../Image/ManAvatar.jpg";
 import AstroBoba from "../Image/AstroBoba.jpg";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa6";
 import signUp from "../Page/CreateAccount";
 import './HomeNotLogIn.css';
+import Review from '../Components/Review';
 //import Footer from '../Components/Footer';
 
-function Home() {
+function HomeNotLogIn() {
     let navigate = useNavigate();
 
     const goToPlayStore = () => {
         navigate("www.play-store.com");
     };
+    const [ reviewIndex, setReviewIndex ] = useState(0)
+
+    const reviewsData = [{ name: "JOHN SMITH", image: ManAvatar, description:"Food Enthousiast", rating:4}, { name: "ANNE-MARIE", image: WomananAvatar, description:"Vegan", rating: 3}, {name: "BRYAN FREYER", image: ManAvatar1, description:"Burger Lover", rating:5}]
+
+
+    const moveToBack = () => {
+        if (reviewIndex > 0) {
+            setReviewIndex(reviewIndex - 1)
+        }
+    }
+
+    const moveToNext = () => {
+        if (reviewIndex < reviewsData.length-1) {
+            setReviewIndex(reviewIndex + 1)
+        }
+    }
     return (
         <div className="Home">
             <header>
@@ -162,7 +180,7 @@ function Home() {
                             <p className={"text-right"}>
                                 Our Happy Customer <br/>
                                 <Col className={"review-container"}>
-                                    <Rating count={1} value={1}></Rating> 4,7
+                                    <FaStar className={"star-icon"}/> 4,7
                                     <span> (27.4k Review)</span>
                                 </Col>
                             </p>
@@ -225,18 +243,15 @@ function Home() {
                     <p style={{fontWeight:'bold', color:'#eb5757', marginTop: '50px'}}>WHAT THEY SAY</p>
                     <h2 id={'Heading'}>What Our Costumer<br/>Say About Us</h2>
                     <p>Rebum lorem no eos ut ipsum<br/>diam tempor sed rebum elitr ipsum<br/>diam tempor sed rebum elitr ipsum<br/>diam tempor sed rebum elitr ipsum</p>
-                    <Col className={"review-container"}>
-                        <img src={ManAvatar} alt= "ManAvatarReview" style={{width:"50px", height:"50px", borderRadius:"50%"}}/>
-                        <p className={"text-right"} style={{color:"#df7b07"}}>
-                            JOHN SMITH<span style={{display: "flex", fontWeight:"normal"}}>Food Enthusiast</span>
-                        </p>
-                    </Col>
-                    <Col>
-                        <Rating count={5} size={20} value={5}/>
-                    </Col>
+                    <Review
+                        name={reviewsData[reviewIndex].name}
+                        image={reviewsData[reviewIndex].image}
+                        description={reviewsData[reviewIndex].description}
+                        rating={reviewsData[reviewIndex].rating}
+                    />
                     <Col className="ArrowButtonStyle">
-                        <Button buttonImage={FaAngleLeft} onClick={signUp}/>
-                        <Button buttonImage={FaAngleRight} onClick={signUp}/>
+                        <Button buttonImage={FaAngleLeft} onClick={moveToBack}/>
+                        <Button buttonImage={FaAngleRight} onClick={moveToNext}/>
                     </Col>
                 </Col>
             </Row>
@@ -260,4 +275,5 @@ function Home() {
     );
 }
 
-export default Home;
+export default HomeNotLogIn;
+
