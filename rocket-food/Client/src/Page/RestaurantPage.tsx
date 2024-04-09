@@ -54,9 +54,11 @@ function RestaurantPage() {
                         <h1>
                             {subTitle}
                         </h1>
-                        <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
-                        <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
-                        <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                        <Row>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                        </Row>
                     </Col>
                 </Row>
             </div>

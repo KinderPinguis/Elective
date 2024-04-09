@@ -83,12 +83,12 @@ const HomeNotLogIn: React.FC = () => {
                             JOHN SMITH<span style={{display: "flex", fontWeight: "normal"}}>Food Enthusiast</span>
                         </p>
                     </Col>
-                    <Rating
+                    {/*<Rating
                         count={5}
                         value={rating}
                         edit={true}
                         onChange={(value) => setRating(value)}
-                    />
+                    />*/}
                     <p>
                         <b>Value: </b>
                         {rating} stars
