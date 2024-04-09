@@ -1,5 +1,5 @@
 export interface FormAllData {
-    type:"customer" | "restaurateur" | "delivery";
+    type:"customer" | "restaurateur" | "restaurant" | "delivery";
     firstName: string;
     middleName: string;
     lastName: string;
@@ -23,7 +23,6 @@ export interface restaurantData {
     country: string;
     city: string;
     creationDate: Date;
-    owner: string;
     phoneNumber: string;
     email: string;
     confirmEmail: string;

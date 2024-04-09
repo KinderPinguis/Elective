@@ -16,7 +16,6 @@ function CreateRestaurant() {
         country: '',
         city: '',
         creationDate: new Date,
-        owner: 'me',
         phoneNumber: '',
         email: '',
         confirmEmail: '',

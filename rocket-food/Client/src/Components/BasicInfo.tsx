@@ -19,7 +19,7 @@ interface BasicInfoProps {
 }
 
 const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFormDataChange }) => {
-    const [formData, setFormData] = useState<{ type:"customer" | "restaurateur" | "delivery"; firstName: string; middleName: string; lastName: string; gender: "male" | "female" | "nonBinary" | ""; year: number; month: number; day: number}>
+    const [formData, setFormData] = useState<{ type:"customer" | "restaurateur" | "restaurant" | "delivery"; firstName: string; middleName: string; lastName: string; gender: "male" | "female" | "nonBinary" | ""; year: number; month: number; day: number}>
     ({
         type: formAllData.type,
         firstName: formAllData.firstName,

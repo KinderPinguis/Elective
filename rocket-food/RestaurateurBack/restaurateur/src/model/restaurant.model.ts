@@ -25,10 +25,6 @@ const restaurant = new mongoose.Schema({
         type: Date,
         required: true
     },
-    owner: {
-        type: String,
-        required: true
-    },
     phoneNumber: {
         type: String,
         required: true

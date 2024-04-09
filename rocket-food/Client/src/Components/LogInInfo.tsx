@@ -136,7 +136,7 @@ const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handle
         {
             save();
 
-            const response = await axios.post('http://localhost:3000/api/users', {
+            await axios.post('http://localhost:3000/api/users', {
                 type: formAllData.type,
                 firstName: formAllData.firstName,
                 middleName: formAllData.middleName,
