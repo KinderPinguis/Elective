@@ -6,7 +6,6 @@ import CreateAccount from './Page/CreateAccount';
 import Terms from './Page/Terms';
 import Privacy from './Page/Privacy';
 import EditProfile from './Page/EditProfile';
-
 import RocketFood from './Page/RocketFood';
 import RestaurantPage from './Page/RestaurantPage';
 

@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({title, image, price, money, cartImage}) => {
             <Row>
                 <img src={image} alt={title}/>
             </Row>
-            <div id={"Text"}>
+            <div id={"text"}>
                 <Row>
                     <Col span={"19"}>
                         <div>

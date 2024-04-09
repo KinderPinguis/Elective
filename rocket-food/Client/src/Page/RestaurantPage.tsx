@@ -58,6 +58,15 @@ function RestaurantPage() {
                             <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
                             <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
                             <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
+                            <Article title={"Pizza"} image={DominosImg} price={5} money={"€"} cartImage={FaCartPlus}/>
                         </Row>
                     </Col>
                 </Row>
