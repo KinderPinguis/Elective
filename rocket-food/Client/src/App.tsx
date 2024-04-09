@@ -8,6 +8,7 @@ import Privacy from './Page/Privacy';
 import EditProfile from './Page/EditProfile';
 import RocketFood from './Page/RocketFood';
 import RestaurantPage from './Page/RestaurantPage';
+import CreateRestaurant from "./Page/CreateRestaurant";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/RocketFood" element={<RocketFood/>}/>
                 <Route path="/Terms" element={<Terms/>} />
                 <Route path="/RestaurantPage" element={<RestaurantPage/>} />
+                <Route path="/CreateRestaurant" element={<CreateRestaurant/>} />
             </Routes>
         </BrowserRouter>
     );
