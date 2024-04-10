@@ -19,11 +19,10 @@ interface RestaurantInfoProps {
 }
 
 const RestaurantInfo: React.FC<RestaurantInfoProps> = ({ restaurantData, changeStep, handleFormDataChange }) => {
-    const [formData, setFormData] = useState<{    nameRestaurant: string; creationDate: Date; owner: string; categories: string;}>
+    const [formData, setFormData] = useState<{    nameRestaurant: string; creationDate: Date; categories: string;}>
     ({
         nameRestaurant: restaurantData.nameRestaurant,
         creationDate: restaurantData.creationDate,
-        owner: restaurantData.owner,
         categories : restaurantData.categories
     });
 
@@ -76,7 +75,6 @@ const RestaurantInfo: React.FC<RestaurantInfoProps> = ({ restaurantData, changeS
     const save = () => {
         restaurantData.nameRestaurant = formData.nameRestaurant;
         restaurantData.creationDate = formData.creationDate;
-        restaurantData.owner = formData.owner;
         restaurantData.categories = formData.categories;
         handleFormDataChange(restaurantData);
     };

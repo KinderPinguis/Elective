@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const restaurant = new mongoose.Schema({
+    idRestaurateur:{
+        type: String,
+        required: true
+    },
     nameRestaurant: {
         type: String,
         required: true
@@ -19,10 +23,6 @@ const restaurant = new mongoose.Schema({
     },
     creationDate: {
         type: Date,
-        required: true
-    },
-    owner: {
-        type: String,
         required: true
     },
     phoneNumber: {

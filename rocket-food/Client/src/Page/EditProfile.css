@@ -10,7 +10,37 @@
     border: var(--color-primary) solid 5px;
 }
 
+#UpdateSuccess{
+    width: 100%;
+}
+
+#editProfile #errorText {
+    color: var(--color-succes)!important;
+    border: 2px solid var(--color-succes);
+    box-shadow: 0 0 5px var(--color-succes);
+}
+
 #buttonUpdate *{
     margin: 20px 0;
     width: 100%;
+}
+
+.DeleteModal {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.DeleteModal .ant-modal-footer .ant-btn-primary {
+    background-color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+.DeleteModal .ant-modal-footer .ant-btn-primary:hover {
+    background-color: var(--color-white);
+}
+
+.DeleteModal .ant-modal-footer .ant-btn-default:hover {
+    border-color: var(--color-error);
 }

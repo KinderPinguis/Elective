@@ -3,7 +3,7 @@ const UserModel = require('../Models/UserModel');
 const bcrypt = require('bcrypt');
 
 const generateAccessToken = (userId) => {
-    return jwt.sign({ userId }, process.env.ACCESS_JWT_KEY, { expiresIn: '1h' });
+    return jwt.sign({ userId }, process.env.ACCESS_JWT_KEY, { expiresIn: '10min' });
 };
 
 const generateRefreshToken = (userId) => {
@@ -48,16 +48,35 @@ exports.createUser = async (req, res) => {
         const newUser = new UserModel(req.body);
         await newUser.save();
 
-        const userId = user._id;
-        const userType = user.type;
+        const userId = newUser._id;
+        const typeUser = newUser.type;
         const accessToken = generateAccessToken(userId);
         const refreshToken = generateRefreshToken(userId);
 
-        res.status(200).json({ message: "You are now connected !", accessToken, refreshToken, userId, userType });
+        res.status(200).json({ message: "You are now connected !", accessToken, refreshToken, userId, typeUser });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
+
+exports.refreshToken = async (req, res) => {
+    try {
+        const refreshToken = req.body.refreshToken;
+        if (!refreshToken) {
+            return res.status(400).json({ message: 'Refresh token is required' });
+        }
+
+        const decoded = jwt.verify(refreshToken, process.env.REFRESH_JWT_KEY);
+        const userId = decoded.userId;
+
+        const accessToken = generateAccessToken(userId);
+
+        res.status(200).json({ accessToken });
+    } catch (error) {
+        res.status(401).json({ message: 'Invalid refresh token' });
+    }
+};
+
 
 exports.getUsers = async (req, res) => {
     try {
@@ -70,7 +89,8 @@ exports.getUsers = async (req, res) => {
 
 exports.getUserById = async (req, res) => {
     try {
-        const user = await UserModel.findById(req.params.id);
+        const userId = req.params.id;
+        const user = await UserModel.findById(userId);
         if (!user) throw new Error('User not found');
         res.status(200).json(user);
     } catch (error) {

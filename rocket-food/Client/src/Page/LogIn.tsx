@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Row,Col } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Row, Col, Radio } from 'antd';
 import Header from '../Components/Header';
 import Footer from "../Components/Footer";
 import './LogIn.css';
@@ -14,9 +14,18 @@ import axios from 'axios';
 function LogIn() {
     let navigate = useNavigate();
 
-    const [formData, setFormData] = useState<{ email: string; password: string }>({ email: '', password: '' });
+    const [formData, setFormData] = useState<{ email: string; password: string }>({
+        email: localStorage.getItem('savedEmail') || '',
+        password: localStorage.getItem('savedPassword') || ''
+    });
+
     const [errorTitle, setErrorTitle] = useState<string>("");
     const [errorText, setErrorText] = useState<string>("");
+    const [rememberMe, setRememberMe] = useState<boolean>(localStorage.getItem('savedEmail') ? true : false);
+
+    const handleRememberMeChange = () => {
+        setRememberMe(prevState => !prevState);
+    };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,9 +51,7 @@ function LogIn() {
             if (passwordInput) {
                 emailInput.classList.add('ErrorInput');
             }
-        }
-        else
-        {
+        } else {
             const response = await axios.post('http://localhost:3000/api/login', {
                 email: formData.email,
                 password: formData.password
@@ -54,9 +61,18 @@ function LogIn() {
                 localStorage.setItem('refreshToken', refreshToken);
                 localStorage.setItem('userId', userId);
                 localStorage.setItem('typeUser', typeUser);
+
+                if (rememberMe) {
+                    localStorage.setItem('savedEmail', formData.email);
+                    localStorage.setItem('savedPassword', formData.password);
+                }
+                else {
+                    localStorage.removeItem('savedEmail');
+                    localStorage.removeItem('savedPassword');
+                }
+
                 navigate('/');
-            })
-            .catch(error => {
+            }).catch(error => {
                 const errorTextElement = document.getElementById('errorText');
                 if (errorTextElement) {
                     errorTextElement.style.display = 'block';
@@ -88,7 +104,7 @@ function LogIn() {
                     <ErrorText errorTitle={errorTitle} errorText={errorText}/>
                     <Row wrap={true} align={'middle'} justify={'start'}>
                         <CustomInput
-                            label="Email or mobile phone number"
+                            label="Your email"
                             name="email"
                             type="text"
                             value={formData.email}
@@ -111,6 +127,9 @@ function LogIn() {
                             }
                         }}
                     />
+                    <Row id="rememberMe" wrap={true} align={"middle"} justify={"start"}>
+                        <Radio checked={rememberMe} onClick={handleRememberMeChange}>Remember me</Radio>
+                    </Row>
                     <Row className="ButtonLogIn" wrap={true} align={'middle'} justify={'center'}>
                         <Button buttonText="Log in" onClick={onSubmit} />
                     </Row>

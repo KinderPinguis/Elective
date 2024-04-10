@@ -18,6 +18,7 @@ export const refreshToken = async (baseUrl: string) => {
         const refreshToken = localStorage.getItem('refreshToken');
         if (!refreshToken) {
             console.error('Refresh token is missing');
+            logOut();
             return;
         }
 
@@ -26,7 +27,15 @@ export const refreshToken = async (baseUrl: string) => {
         localStorage.setItem('accessToken', response.data.accessToken);
     } catch (error) {
         console.error('Error refreshing token:', error);
+        logOut();
     }
+};
+
+export const logOut = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("typeUser");
 };
 
 export const isTokenExpired = (token: string) => {

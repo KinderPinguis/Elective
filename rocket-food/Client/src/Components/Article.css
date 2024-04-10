@@ -1,5 +1,5 @@
 .Article {
-
+    margin: 8px;
 }
 
 .Article img {
@@ -8,23 +8,23 @@
     border-top-right-radius: 10px;
 }
 
-#Text{
+#text {
     max-width: 200px;
     background-color: var(--color-light);
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
-#Text *{
-   padding-left: 1px;
+#text * {
+    padding-left: 1px;
 }
 
-#Cart *{
+#Cart * {
     width: 30px;
     height: 30px;
 }
 
-#Cart{
+#Cart {
     position: absolute;
     bottom: 0;
 }

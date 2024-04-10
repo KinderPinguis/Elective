@@ -137,13 +137,36 @@ const ContactInfo: React.FC<RestaurantLogInInfoProps> = ({ restaurantData, chang
         {
             save();
 
-            await axios.post('http://localhost:5000/restaurant/create', {
+            const idRestaurateur = localStorage.getItem("userId");
+
+            await axios.post('http://localhost:3000/api/users', {
+                type: "restaurant",
+                firstName: restaurantData.nameRestaurant,
+                birthday: new Date(),
+                streetAddress: restaurantData.streetAddress,
+                country: restaurantData.country,
+                city: restaurantData.city,
+                tel: restaurantData.phoneNumber,
+                email: restaurantData.email,
+                password: restaurantData.password,
+            }).then(response => {
+            })
+            .catch(error => {
+                const errorTextElement = document.getElementById('errorText');
+                if (errorTextElement) {
+                    errorTextElement.style.display = 'block';
+                }
+                newErrorTitle = "Create account failed";
+                newErrorText = error.response.data.message;
+            });
+
+            await axios.post('http://localhost:5000/api/restaurant', {
+                idRestaurateur: idRestaurateur,
                 nameRestaurant: restaurantData.nameRestaurant,
                 streetAddress: restaurantData.streetAddress,
                 country: restaurantData.country,
                 city: restaurantData.city,
                 creationDate: new Date(),
-                owner: restaurantData.owner,
                 phoneNumber: restaurantData.phoneNumber,
                 email: restaurantData.email,
                 password: restaurantData.password,
@@ -151,13 +174,13 @@ const ContactInfo: React.FC<RestaurantLogInInfoProps> = ({ restaurantData, chang
             }).then(response => {
                 navigate('/RestaurantPage');
             })
-                .catch(error => {
-                    const errorTextElement = document.getElementById('errorText');
-                    if (errorTextElement) {
-                        errorTextElement.style.display = 'block';
-                    }
-                    newErrorTitle = "Restaurant creation failed";
-                });
+            .catch(error => {
+                const errorTextElement = document.getElementById('errorText');
+                if (errorTextElement) {
+                    errorTextElement.style.display = 'block';
+                }
+                newErrorTitle = "Restaurant creation failed";
+            });
         }
 
         setErrorTitle(newErrorTitle);

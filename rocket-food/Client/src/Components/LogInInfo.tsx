@@ -136,7 +136,7 @@ const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handle
         {
             save();
 
-            const response = await axios.post('http://localhost:3000/api/users', {
+            await axios.post('http://localhost:3000/api/users', {
                 type: formAllData.type,
                 firstName: formAllData.firstName,
                 middleName: formAllData.middleName,
@@ -150,8 +150,11 @@ const ContactInfo: React.FC<LogInInfoProps> = ({ formAllData, changeStep, handle
                 email: formAllData.email,
                 password: formAllData.password
             }).then(response => {
-                const token = response.data.accessToken;
-                localStorage.setItem('token', token);
+                const { accessToken, refreshToken, userId, typeUser } = response.data;
+                localStorage.setItem('accessToken', accessToken);
+                localStorage.setItem('refreshToken', refreshToken);
+                localStorage.setItem('userId', userId);
+                localStorage.setItem('typeUser', typeUser);
                 navigate('/');
             })
             .catch(error => {

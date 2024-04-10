@@ -34,4 +34,4 @@ DB_Connect().catch(err => console.log(err));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/restaurant', RestaurantRouter);
+app.use('/api', RestaurantRouter);

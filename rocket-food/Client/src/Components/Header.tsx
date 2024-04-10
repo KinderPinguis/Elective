@@ -4,6 +4,7 @@ import Button from './Button';
 import { FaSearch, FaShoppingCart, FaSignInAlt } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { FiLogOut } from "react-icons/fi";
+import CartBadge from './CartBadge';
 import { Col, Row } from "antd";
 import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
@@ -97,6 +98,7 @@ const Header: React.FC = () => {
                                     </Col>
                                     <Col flex={"auto"}>
                                         <li><a href="#"><FaShoppingCart/></a></li>
+                                        <CartBadge />
                                     </Col>
                                     {typeUser ?
                                         (

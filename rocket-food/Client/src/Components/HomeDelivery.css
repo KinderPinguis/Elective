@@ -1,0 +1,36 @@
+#homeDelivery {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.SwitchDelivery{
+    align-items: end;
+}
+
+.SwitchDelivery .ant-switch-checked {
+    background-color: var(--color-succes)!important;
+}
+
+.SwitchDelivery .ant-switch {
+    background-color: var(--color-error)
+}
+
+.AcceptModal {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.AcceptModal .ant-modal-footer .ant-btn-primary {
+    background-color: var(--color-warning);
+    border-color: var(--color-warning);
+}
+
+.AcceptModal .ant-modal-footer .ant-btn-primary:hover {
+    background-color: var(--color-white);
+}
+
+.AcceptModal .ant-modal-footer .ant-btn-default:hover {
+    border-color: var(--color-warning);
+}
