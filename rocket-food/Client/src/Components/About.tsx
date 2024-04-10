@@ -4,7 +4,6 @@ import PizzaRocket from "../Image/AstroRocketNoBg.png";
 import PizzaKing from "../Image/AstroKingNoBg.png";
 import RestaurantReview from "../Image/AstroReviewNoBg.png";
 import ManAvatar from "../Image/ManAvatar2.jpg";
-import Rating from "./Rating";
 import React from "react";
 import "../Components/About.css";
 import ManAvatar1 from "../Image/ManAvatar.jpg";
@@ -19,29 +18,29 @@ return(
     <div>
         <Row justify="space-around" style={{ width: '100%', margin: 0 }}>
             <Col id="ColInfos">
-                <h3 style={{color:'#eb5757'}}>What we serve</h3>
-                <h1>Your Favorite Food<br />Delivery Partner</h1>
+                <h1>What we serve</h1>
+                <h3>Your Favorite Food<br />Delivery Partner</h3>
             </Col>
-            <Row gutter={[88, 8]} style={{ marginTop: '190px' }}>
-                <Col flex="1" style={{ textAlign: 'center' }}>
+            <Row gutter={[88, 8]} className={'service-row'}>
+                <Col flex="1" className={'service-container'}>
                     <Col>
-                        <img src={PizzaImage} alt="PizzaImage" style={{ width: "50%", height: "50%" }} />
+                        <img src={PizzaImage} alt="PizzaImage"/>
                         <h2 id="SubTitle">Easy To Order</h2>
                         <p>You only need a few steps in</p>
                         <p>ordering food at Rocket Food</p>
                     </Col>
                 </Col>
-                <Col flex="1" style={{ textAlign: 'center' }}>
+                <Col flex="1" className={'service-container'}>
                     <Col>
-                        <img src={PizzaRocket} alt="PizzaRocket" style={{ width: "50%", height: "50%" }} />
+                        <img src={PizzaRocket} alt="PizzaRocket"/>
                         <h2 id="SubTitle">Fastest Delivery</h2>
                         <p>Delivery that is always ontime</p>
                         <p>even faster and reliable</p>
                     </Col>
                 </Col>
-                <Col flex="1" style={{ textAlign: 'center' }}>
+                <Col flex="1" className={'service-container'}>
                     <Col>
-                        <img src={PizzaKing} alt="PizzaKing" style={{ width: "50%", height: "50%" }} />
+                        <img src={PizzaKing} alt="PizzaKing"/>
                         <h2 id="SubTitle">Best Quality</h2>
                         <p>Not only fast for us, quality is also</p>
                         <p>number one at Rocket Food</p>
@@ -71,9 +70,6 @@ return(
                     <p className={"text-right"} style={{color:"#df7b07"}}>
                         JOHN SMITH<span style={{display: "flex", fontWeight:"normal"}}>Food Enthusiast</span>
                     </p>
-                </Col>
-                <Col>
-                    <Rating count={5} size={20} value={5}/>
                 </Col>
                 <Col className="ArrowButtonStyle">
                     <Button buttonImage={FaAngleLeft} onClick={signUp}/>
