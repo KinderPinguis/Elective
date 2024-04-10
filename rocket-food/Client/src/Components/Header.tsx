@@ -7,6 +7,10 @@ import { FiLogOut } from "react-icons/fi";
 import { Col, Row } from "antd";
 import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
+import "../Page/RestaurantPage";
+import "../Page/CreateRestaurant";
+import "../Page/CreateAccount";
+import "../Components/ContactInfo";
 
 const Header: React.FC = () => {
     let navigate = useNavigate();
@@ -40,6 +44,17 @@ const Header: React.FC = () => {
         navigate("/LogIn");
     };
 
+    const [servicesDropdownVisible, setServicesDropdownVisible] = useState(false);
+    const [menuDropdownVisible, setMenuDropdownVisible] = useState(false);
+
+    const toggleServicesDropdown = () => {
+        setServicesDropdownVisible(!servicesDropdownVisible);
+    };
+
+    const toggleMenuDropdown = () => {
+        setMenuDropdownVisible(!menuDropdownVisible);
+    };
+
     return (
         <div id="headerDiv" className="NoSelect">
             <Row wrap={true} align={"middle"} justify={"center"}>
@@ -56,13 +71,30 @@ const Header: React.FC = () => {
                                         <li><Link to="/RocketFood">Why Rocket Food</Link></li>
                                     </Col>
                                     <Col flex={"auto"}>
-                                        <li><a href="#">Services</a></li>
+                                        <li onMouseEnter={toggleServicesDropdown} onMouseLeave={toggleServicesDropdown}><a href="#">Services</a>
+                                            {servicesDropdownVisible && (
+                                                <div className="dropdown-content">
+                                                    <Link to="../Page/CreateRestaurant">Restaurateur</Link>
+                                                    <Link to="../Page/CreateAccount">Livraison</Link>
+                                                </div>
+                                            )}
+                                        </li>
                                     </Col>
                                     <Col flex={"auto"}>
-                                        <li><a href="#">Menu</a></li>
+                                        <li onMouseEnter={toggleServicesDropdown} onMouseLeave={toggleServicesDropdown}><a href="#">Menu</a>
+                                            {servicesDropdownVisible && (
+                                                <div className="dropdown-content">
+                                                    <Link to="../Page/RestaurantPage">Pizza</Link>
+                                                    <Link to="../Page/RestaurantPage">Burger</Link>
+                                                    <Link to="../Page/RestaurantPage">Sushi</Link>
+                                                    <Link to="../Page/RestaurantPage">Tacos</Link>
+                                                    <Link to="../Page/RestaurantPage">Ramen</Link>
+                                                </div>
+                                            )}
+                                        </li>
                                     </Col>
                                     <Col flex={"auto"}>
-                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="../Components/ContactInfo">Contact</a></li>
                                     </Col>
                                     <Col flex={"auto"}>
                                         <li><a href="#"><FaSearch/></a></li>
