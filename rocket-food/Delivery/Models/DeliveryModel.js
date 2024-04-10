@@ -10,6 +10,7 @@ const DeliveryHistorySchema = new Schema({
     status: String,
     distance: String,
     time: String,
+    codeDelivery: String
 });
 
 module.exports = mongoose.model('DeliveryHistory', DeliveryHistorySchema);

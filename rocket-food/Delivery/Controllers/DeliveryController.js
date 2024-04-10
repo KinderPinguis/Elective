@@ -22,3 +22,23 @@ exports.getDeliveryHistoryByIdDriver = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 };
+
+exports.checkCode = async (req, res) => {
+    try {
+        const { id, codeDelivery } = req.body;
+        const order = await DeliveryModel.findOne({ _id: id });
+
+        if (!order) {
+            return res.status(401).json({ message: 'Order not founded' });
+        }
+
+        if(order.codeDelivery === codeDelivery)
+        {
+            res.status(200).json(true);
+        }
+
+        res.status(200).json(false);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
