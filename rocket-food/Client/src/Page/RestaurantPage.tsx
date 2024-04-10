@@ -45,7 +45,6 @@ function RestaurantPage() {
         try {
             axios.get(getRestaurantUrl)
                 .then(response => {
-                    console.log('Info :', response.data);
                     setRestaurant(response.data[0]);
                 })
         } catch (error) {
