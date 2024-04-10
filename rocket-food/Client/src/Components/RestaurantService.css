@@ -1,4 +1,4 @@
-.service-container {
+/*.service-container {
     max-width: 800px;
     margin: 0 auto;
 }
@@ -11,16 +11,32 @@
     font-size: 80px;
     font-weight: bold;
 }
-#RestoImage{
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    right: 50px;
-}
 .service-heading {
     text-align: center;
+}*/
+#Title{
+    color: var(--color-primary);
+    font-size: 80px;
+    font-weight: bold;
 }
-
+#RestoIntro{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    right: 50%;
+    clip-path: polygon(49% 2%, 78% 2%, 100% 35%, 100% 70%, 100% 96%, 24% 87%, 2% 92%, 2% 69%, 6% 43%, 0 1%);
+}
+.restoservice-container {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+.restoservice-container span{
+    color: #df7b07;
+}
+.star-icon {
+    color: #ffc107;
+}
 .service-card {
     border: 1px solid #ddd;
     border-radius: 8px;

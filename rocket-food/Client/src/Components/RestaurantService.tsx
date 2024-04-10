@@ -1,21 +1,37 @@
 import React from 'react';
 import {Col, Row} from "antd";
 import './RestaurantService.css';
-import RestoImage from '../Image/RestoImage.jpg';
-
+import Button from "./Button";
+import signUp from "../Page/CreateAccount";
+import AstroBoba from "../Image/AstroBoba.jpg";
+import {FaStar} from "react-icons/fa6";
+import RestoIntro from "../Image/AstroPizzaWhite.png";
 const RestaurantService: React.FC = () => {
     return (
         <div className="service-container">
             <h2 className="service-heading">Our Services for Restaurant Owners</h2>
             <Row wrap={true} justify={"center"}>
-                <Col span={16} className="service-col">
-                    <h1>
+                <Col span={24}>
+                    <h1 style={{fontWeight:'bold', fontSize:'72px'}}>
                         Be The Fastest <br/>In Delivering<br/> Your <span id={"Title"}>Food</span>
                     </h1>
+                    <Col className="restoservice-container">
+                        <Button buttonText={"Get Started"} onClick={signUp}></Button>
+                        <Col className={"restoservice-container"}>
+                            <img src={AstroBoba} alt= "AstroBoba" style={{width: "60px", height: "60px", borderRadius: "50%", padding: "5px"}}/>
+                            <p className={"text-right"}>
+                                Our Happy Customer <br/>
+                                <Col className={"restoservice-container"}>
+                                    <FaStar className={"star-icon"}/> 4,7
+                                    <span> (27.4k Review)</span>
+                                </Col>
+                            </p>
+                        </Col>
+                    </Col>
                     <p>Our job is filling your tummy with delicious food <br/> and with fast and free delivery</p>
                 </Col>
                 <Col>
-                    <img src={RestoImage} alt="PizzaMan" id={"RestoImage"}/>
+                    <img src={RestoIntro} alt="PizzaMan" className="RoundedImage" id={"RestoIntro"}/>
                 </Col>
             </Row>
             <Row gutter={[16, 16]} justify="center">

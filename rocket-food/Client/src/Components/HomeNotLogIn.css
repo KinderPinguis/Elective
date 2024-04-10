@@ -15,7 +15,7 @@
     width: 500px;
     height: 500px;
     position: absolute;
-    right: 50px;
+    right: 50%;
     clip-path: polygon(49% 2%, 78% 2%, 100% 35%, 100% 70%, 100% 96%, 24% 87%, 2% 92%, 2% 69%, 6% 43%, 0 1%);
 }
 
