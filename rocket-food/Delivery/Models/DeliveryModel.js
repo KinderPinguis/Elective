@@ -7,6 +7,7 @@ const DeliveryHistorySchema = new Schema({
     idDriver: String,
     idRestaurant: String,
     price: String,
+    status: String,
     distance: String,
     time: String,
 });

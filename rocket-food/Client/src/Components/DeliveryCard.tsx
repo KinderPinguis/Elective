@@ -1,6 +1,5 @@
 import React from 'react';
 import './DeliverCard.css';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import logo from '../Image/AstroBurgerRed.png';
 import { RiPinDistanceLine } from "react-icons/ri";
 import { MdOutlineTimer } from "react-icons/md";
@@ -10,11 +9,12 @@ interface DeliverCardProps {
     restaurant: string;
     address: string;
     price: string;
+    status: string;
     distance: string;
     time: string;
 }
 
-const DeliverCard: React.FC<DeliverCardProps> = ({ restaurant, address, price, distance, time }) => {
+const DeliverCard: React.FC<DeliverCardProps> = ({ restaurant, address, price, status, distance, time }) => {
 
     return (
         <div className="DeliveryCard">
@@ -30,8 +30,8 @@ const DeliverCard: React.FC<DeliverCardProps> = ({ restaurant, address, price, d
                         <p>{price}</p>
                     </div>
                     <div className="time-left">
-                        <p className="small-image"><FaEye/></p>
-                        <p>{time}</p>
+                        <p className="small-image"><FaHandHoldingDollar/></p>
+                        <p>{status}</p>
                     </div>
                 </div>
                 <div className="flex-row">

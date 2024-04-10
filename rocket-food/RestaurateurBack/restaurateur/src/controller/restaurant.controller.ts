@@ -14,6 +14,16 @@ export async function createRestaurant(req: Request, res: Response, next: NextFu
     }
 }
 
+export async function getRestaurantById(req: Request, res: Response) {
+    try {
+        const idRestaurant = req.params.id;
+        const restaurant = await restaurantModel.findById(idRestaurant);
+        res.status(200).json(restaurant);
+    } catch (error) {
+        res.status(404).json({ message: error });
+    }
+};
+
 export async function getRestaurantByIdRestaurateur(req: Request, res: Response) {
     try {
         const idRestaurateur = req.params.id;

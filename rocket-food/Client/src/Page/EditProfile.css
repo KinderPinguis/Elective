@@ -10,6 +10,16 @@
     border: var(--color-primary) solid 5px;
 }
 
+#UpdateSuccess{
+    width: 100%;
+}
+
+#editProfile #errorText {
+    color: var(--color-succes)!important;
+    border: 2px solid var(--color-succes);
+    box-shadow: 0 0 5px var(--color-succes);
+}
+
 #buttonUpdate *{
     margin: 20px 0;
     width: 100%;

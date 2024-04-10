@@ -10,6 +10,7 @@ import CustomInput from "../Components/CustomInput";
 import Button from "../Components/Button";
 import { isTokenExpired, refreshToken } from '../MainFonction';
 import axios from 'axios';
+import ErrorText from "../Components/ErrorText";
 
 function EditProfile() {
     let navigate = useNavigate();
@@ -103,6 +104,7 @@ function EditProfile() {
         try {
             const userId = localStorage.getItem('userId');
             let accessToken = localStorage.getItem('accessToken');
+            const errorTextElement = document.getElementById('errorText');
 
             if (!userId || !accessToken) {
                 console.error('User ID or Access token is missing');
@@ -119,6 +121,10 @@ function EditProfile() {
                     Authorization: `Bearer ${accessToken}`,
                 },
             });
+
+            if (errorTextElement) {
+                errorTextElement.style.display = 'block';
+            }
 
         } catch (error) {
             console.error('Error updating profile:', error);
@@ -140,6 +146,9 @@ function EditProfile() {
                 </Row>
                 <Row wrap={true} align={"middle"} justify={"center"}>
                     <img id="imgProfile" src={AstroProfilNoBg}/>
+                </Row>
+                <Row className="UpdateSuccess" wrap={true} align={"middle"} justify={"center"}>
+                    <ErrorText errorTitle="Update successful" errorText="your data has been updated" />
                 </Row>
                 <Row wrap={true} align={"middle"} justify={"start"}>
                     <Col span={10}>
