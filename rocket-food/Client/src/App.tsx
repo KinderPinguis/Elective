@@ -10,6 +10,9 @@ import EditProfile from './Page/EditProfile';
 import RocketFood from './Page/RocketFood';
 import RestaurantPage from './Page/RestaurantPage';
 import CreateRestaurant from "./Page/CreateRestaurant";
+import Contact from "./Page/Contact";
+import ServiceRestaurant from "./Page/ServiceRestaurant";
+import ServiceDelivery from "./Page/ServiceDelivery";
 
 
 function App() {
@@ -25,6 +28,9 @@ function App() {
                 <Route path="/Terms" element={<Terms/>} />
                 <Route path="/RestaurantPage" element={<RestaurantPage/>} />
                 <Route path="/CreateRestaurant" element={<CreateRestaurant/>} />
+                <Route path="/Contact" element={<Contact/>} />
+                <Route path="/ServiceRestaurant" element={<ServiceRestaurant/>} />
+                <Route path="/ServiceDelivery" element={<ServiceDelivery/>} />
             </Routes>
         </BrowserRouter>
     );

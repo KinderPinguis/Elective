@@ -1,0 +1,23 @@
+.service-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.service-heading {
+    text-align: center;
+}
+
+.service-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    margin-top: 0;
+}
+
+.service-card p {
+    margin-bottom: 0;
+}

@@ -7,10 +7,6 @@ import { FiLogOut } from "react-icons/fi";
 import { Col, Row } from "antd";
 import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
-import "../Page/RestaurantPage";
-import "../Page/CreateRestaurant";
-import "../Page/CreateAccount";
-import "../Components/ContactInfo";
 
 const Header: React.FC = () => {
     let navigate = useNavigate();
@@ -74,8 +70,8 @@ const Header: React.FC = () => {
                                         <li onMouseEnter={toggleServicesDropdown} onMouseLeave={toggleServicesDropdown}><a href="#">Services</a>
                                             {servicesDropdownVisible && (
                                                 <div className="dropdown-content">
-                                                    <Link to="../Page/CreateRestaurant">Restaurateur</Link>
-                                                    <Link to="../Page/CreateAccount">Livraison</Link>
+                                                    <Link to="/ServiceRestaurant">Restaurateur</Link>
+                                                    <Link to="/ServiceDelivery">Livraison</Link>
                                                 </div>
                                             )}
                                         </li>
@@ -84,17 +80,17 @@ const Header: React.FC = () => {
                                         <li onMouseEnter={toggleServicesDropdown} onMouseLeave={toggleServicesDropdown}><a href="#">Menu</a>
                                             {servicesDropdownVisible && (
                                                 <div className="dropdown-content">
-                                                    <Link to="../Page/RestaurantPage">Pizza</Link>
-                                                    <Link to="../Page/RestaurantPage">Burger</Link>
-                                                    <Link to="../Page/RestaurantPage">Sushi</Link>
-                                                    <Link to="../Page/RestaurantPage">Tacos</Link>
-                                                    <Link to="../Page/RestaurantPage">Ramen</Link>
+                                                    <Link to="/RestaurantPage">Pizza</Link>
+                                                    <Link to="/RestaurantPage">Burger</Link>
+                                                    <Link to="/RestaurantPage">Sushi</Link>
+                                                    <Link to="/RestaurantPage">Tacos</Link>
+                                                    <Link to="/RestaurantPage">Ramen</Link>
                                                 </div>
                                             )}
                                         </li>
                                     </Col>
                                     <Col flex={"auto"}>
-                                        <li><a href="../Components/ContactInfo">Contact</a></li>
+                                        <li><Link to="/Contact">Contact</Link></li>
                                     </Col>
                                     <Col flex={"auto"}>
                                         <li><a href="#"><FaSearch/></a></li>
