@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './HomeDelivery.css'
-import { Col, Row, Switch } from "antd";
+import {Col, Modal, Row, Switch} from "antd";
 import DeliveryCard from "./DeliveryCard";
+import { useNavigate } from 'react-router-dom';
 
 interface DeliveryHistory {
-    id: string;
+    _id: string;
     idRestaurant: string;
     price: string;
     status: string;
@@ -16,11 +17,14 @@ interface DeliveryHistory {
 }
 
 const HomeDelivery: React.FC = () => {
+    let navigate = useNavigate();
 
-    const [deliveryHistory, setDeliveryHistory] = useState<DeliveryHistory[]>([]);
     const [deliveredDeliveries, setDeliveredDeliveries] = useState<DeliveryHistory[]>([]);
     const [pendingDeliveries, setPendingDeliveries] = useState<DeliveryHistory[]>([]);
     const [switchChecked, setSwitchChecked] = useState(false);
+
+    const [isAcceptModalVisible, setIsAcceptModalVisible] = useState(false);
+    const [selectedDeliveryId, setSelectedDeliveryId] = useState<string | null>(null);
 
     useEffect(() => {
         const userId = localStorage.getItem('userId');
@@ -48,7 +52,6 @@ const HomeDelivery: React.FC = () => {
                                     pending.push(updatedDelivery);
                                 }
 
-                                setDeliveryHistory(fetchedDeliveryHistory);
                                 setDeliveredDeliveries(delivered);
                                 setPendingDeliveries(pending);
                             })
@@ -67,6 +70,26 @@ const HomeDelivery: React.FC = () => {
         setSwitchChecked(checked);
     };
 
+    const showDeleteModal = (deliveryId: string) => {
+        setSelectedDeliveryId(deliveryId);
+        setIsAcceptModalVisible(true);
+    };
+
+    const handleCancelDelete = () => {
+        setIsAcceptModalVisible(false);
+    };
+
+    const acceptDelivery = () => {
+        if (selectedDeliveryId) {
+            localStorage.setItem("deliveryId", selectedDeliveryId);
+            navigate("/Delivery");
+        }
+    };
+
+    const openHistory = () => {
+
+    };
+
     return (
         <div id="homeDelivery" className="NoSelect">
             <Row wrap={true} align={'middle'} justify={"center"}>
@@ -81,6 +104,7 @@ const HomeDelivery: React.FC = () => {
                 {switchChecked ? (
                     pendingDeliveries.map((delivery: DeliveryHistory, index: number) => (
                         <DeliveryCard
+                            onClick={() => showDeleteModal(delivery._id)}
                             key={index}
                             restaurant={delivery.restaurant || "Unknown Restaurant"}
                             address={delivery.address}
@@ -98,6 +122,7 @@ const HomeDelivery: React.FC = () => {
             <Row wrap={true} justify={"start"}>
                 {deliveredDeliveries.map((delivery: DeliveryHistory, index: number) => (
                     <DeliveryCard
+                        onClick={openHistory}
                         key={index}
                         restaurant={delivery.restaurant || "Unknown Restaurant"}
                         address={delivery.address}
@@ -108,6 +133,17 @@ const HomeDelivery: React.FC = () => {
                     />
                 ))}
             </Row>
+
+            <Modal
+                title="Confirm accept delivery"
+                visible={isAcceptModalVisible}
+                onOk={acceptDelivery}
+                onCancel={handleCancelDelete}
+                className="AcceptModal"
+                okText="Accept"
+            >
+                <p>Are you sure you want to accept this delivery ?</p>
+            </Modal>
         </div>
     );
 };

@@ -41,6 +41,17 @@ const Header: React.FC = () => {
         navigate("/LogIn");
     };
 
+    const [servicesDropdownVisible, setServicesDropdownVisible] = useState(false);
+    const [menuDropdownVisible, setMenuDropdownVisible] = useState(false);
+
+    const toggleServicesDropdown = () => {
+        setServicesDropdownVisible(!servicesDropdownVisible);
+    };
+
+    const toggleMenuDropdown = () => {
+        setMenuDropdownVisible(!menuDropdownVisible);
+    };
+
     return (
         <div id="headerDiv" className="NoSelect">
             <Row wrap={true} align={"middle"} justify={"center"}>
@@ -57,13 +68,30 @@ const Header: React.FC = () => {
                                         <li><Link to="/RocketFood">Why Rocket Food</Link></li>
                                     </Col>
                                     <Col flex={"auto"}>
-                                        <li><a href="#">Services</a></li>
+                                        <li onMouseEnter={toggleServicesDropdown} onMouseLeave={toggleServicesDropdown}><a href="#">Services</a>
+                                            {servicesDropdownVisible && (
+                                                <div className="dropdown-content">
+                                                    <Link to="/ServiceRestaurant">Restaurateur</Link>
+                                                    <Link to="/ServiceDelivery">Livraison</Link>
+                                                </div>
+                                            )}
+                                        </li>
                                     </Col>
                                     <Col flex={"auto"}>
-                                        <li><a href="#">Menu</a></li>
+                                        <li onMouseEnter={toggleServicesDropdown} onMouseLeave={toggleServicesDropdown}><a href="#">Menu</a>
+                                            {servicesDropdownVisible && (
+                                                <div className="dropdown-content">
+                                                    <Link to="/RestaurantPage">Pizza</Link>
+                                                    <Link to="/RestaurantPage">Burger</Link>
+                                                    <Link to="/RestaurantPage">Sushi</Link>
+                                                    <Link to="/RestaurantPage">Tacos</Link>
+                                                    <Link to="/RestaurantPage">Ramen</Link>
+                                                </div>
+                                            )}
+                                        </li>
                                     </Col>
                                     <Col flex={"auto"}>
-                                        <li><a href="#">Contact</a></li>
+                                        <li><Link to="/Contact">Contact</Link></li>
                                     </Col>
                                     <Col flex={"auto"}>
                                         <li><a href="#"><FaSearch/></a></li>

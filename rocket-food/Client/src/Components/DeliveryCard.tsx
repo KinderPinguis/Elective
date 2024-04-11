@@ -6,6 +6,7 @@ import { MdOutlineTimer } from "react-icons/md";
 import { FaHandHoldingDollar } from "react-icons/fa6";
 
 interface DeliverCardProps {
+    onClick: () => void;
     restaurant: string;
     address: string;
     price: string;
@@ -14,15 +15,15 @@ interface DeliverCardProps {
     time: string;
 }
 
-const DeliverCard: React.FC<DeliverCardProps> = ({ restaurant, address, price, status, distance, time }) => {
+const DeliverCard: React.FC<DeliverCardProps> = ({ onClick, restaurant, address, price, status, distance, time }) => {
 
     return (
-        <div className="DeliveryCard">
-            <a href="/" className="hero-image-container">
+        <div className="DeliveryCard" onClick={onClick}>
+            <a className="hero-image-container">
                 <img className="hero-image" src={logo}/>
             </a>
             <main className="main-content">
-                <h1><a href="#">{restaurant}</a></h1>
+                <h1><a>{restaurant}</a></h1>
                 <p>{address}</p>
                 <div className="flex-row">
                     <div className="coin-base">
