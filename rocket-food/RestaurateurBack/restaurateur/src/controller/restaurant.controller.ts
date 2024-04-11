@@ -22,7 +22,7 @@ export async function getRestaurantById(req: Request, res: Response) {
     } catch (error) {
         res.status(404).json({ message: error });
     }
-};
+}
 
 export async function getRestaurantByIdRestaurateur(req: Request, res: Response) {
     try {
@@ -32,7 +32,7 @@ export async function getRestaurantByIdRestaurateur(req: Request, res: Response)
     } catch (error) {
         res.status(404).json({ message: error });
     }
-};
+}
 
 export async function getRestaurantByCategories(req: Request, res: Response) {
     try {
@@ -42,7 +42,7 @@ export async function getRestaurantByCategories(req: Request, res: Response) {
     } catch (error) {
         res.status(404).json({ message: error });
     }
-};
+}
 
 export async function updateRestaurant(req: Request, res: Response) {
     try {
@@ -54,7 +54,7 @@ export async function updateRestaurant(req: Request, res: Response) {
     } catch (error) {
         res.status(404).json({ message: error });
     }
-};
+}
 
 export async function deleteRestaurant(req: Request, res: Response) {
     try {
@@ -65,4 +65,4 @@ export async function deleteRestaurant(req: Request, res: Response) {
     } catch (error) {
         res.status(404).json({ message: error });
     }
-};
+}

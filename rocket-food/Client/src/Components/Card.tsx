@@ -6,11 +6,12 @@ interface CardProps {
     title: string;
     description : string;
     image: string;
+    onClick: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ title, image, description}) => {
+const Card: React.FC<CardProps> = ({ title, image, description, onClick}) => {
     return (
-        <div className="card">
+        <div className="card" onClick={onClick}>
             <Row>
                 <Col span={"13"}>
                     <div className="image-container">

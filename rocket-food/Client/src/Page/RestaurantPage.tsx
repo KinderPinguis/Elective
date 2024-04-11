@@ -5,7 +5,7 @@ import './RestaurantPage.css';
 import DominosImg from '../Image/DominosPizza.jpeg';
 import {FaStar, FaCartPlus} from "react-icons/fa";
 import Button from "../Components/Button";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {Col, Row} from "antd";
 import Article from "../Components/Article";
 import axios from "axios";
@@ -13,6 +13,7 @@ import axios from "axios";
 
 function RestaurantPage() {
     let navigate = useNavigate();
+    let { id } = useParams();
 
     interface Restaurant {
         nameRestaurant: string;
@@ -39,18 +40,19 @@ function RestaurantPage() {
         password: '',
         categories: ''
     });
-    const getRestaurantUrl = 'http://localhost:5000/api/restaurant/6615cd0fe33016399091712c';
+
+    /*const idRestaurant = "6615cd6c2ca27e113576f8fd";
+    const getRestaurantUrl = `http://localhost:5000/api/restaurant/${idRestaurant}`;*/
 
     const fetchRestaurantData = async () => {
         try {
-            axios.get(getRestaurantUrl)
+            axios.get(`http://localhost:5000/api/restaurant/${id}`)
                 .then(response => {
-                    setRestaurant(response.data[0]);
+                    setRestaurant(response.data);
                 })
         } catch (error) {
             console.error('Erreur lors de la récupération des restaurants :', error);
         }
-        ;
     }
 
     useEffect(() => {
@@ -79,7 +81,7 @@ function RestaurantPage() {
             <img id="Img" src={DominosImg} alt=""/>
             <div id={"Page"}>
                 <h1>
-                    {restaurant.nameRestaurant} - {restaurant.city}
+                    {restaurant.nameRestaurant} - {restaurant.streetAddress} {restaurant.city}
                 </h1>
                 <h3> A {distance} {unit} {estimedTime}</h3>
                 <Button onClick={goToStar} buttonImage={icon}/>
