@@ -20,7 +20,7 @@
     text-align: center;
 }
 input[type="submit"] {
-    background-color: #214769;
+    background-color: #eb5757;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -28,7 +28,7 @@ input[type="submit"] {
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 input[type="submit"]:hover {
-    background-color: #eb5757;
+    background-color: #df7b07;
 }
 input[type="text"],
 textarea {

@@ -1,9 +1,9 @@
-.service-container {
+.delivery-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.service-heading {
+.delivery-heading {
     text-align: center;
 }
 
@@ -12,6 +12,7 @@
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .service-card h3 {
@@ -20,4 +21,7 @@
 
 .service-card p {
     margin-bottom: 0;
+}
+.bouton-center{
+    margin-bottom: 50%;
 }

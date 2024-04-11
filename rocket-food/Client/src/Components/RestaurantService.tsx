@@ -31,7 +31,7 @@ const RestaurantService: React.FC = () => {
                     <p>Our job is filling your tummy with delicious food <br/> and with fast and free delivery</p>
                 </Col>
                 <Col>
-                    <img src={RestoIntro} alt="PizzaMan" className="RoundedImage" id={"RestoIntro"}/>
+                    <img src={RestoIntro} alt="PizzaMan" className="RestoRounded" id={"RestoIntro"}/>
                 </Col>
             </Row>
             <Row gutter={[16, 16]} justify="center">
@@ -59,7 +59,11 @@ const RestaurantService: React.FC = () => {
                         <p>Collect valuable feedback from your customers to improve your restaurant's service and quality.</p>
                     </div>
                 </Col>
+                <Col className={'text-center'}>
+                    <Button buttonText={"Get Started"} onClick={signUp}></Button>
+                </Col>
             </Row>
+
         </div>
     );
 };
