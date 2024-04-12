@@ -70,10 +70,6 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ formAllData, changeStep, handleFo
     };
 
     const generateDateOptions = () => {
-        if (formData.month === 1) {
-            return [<option key="select-date" value="">Select Date</option>];
-        }
-
         const daysInMonth = new Date(formData.year, formData.month, 0).getDate();
         const options = [];
         for (let i = 1; i <= daysInMonth; i++) {

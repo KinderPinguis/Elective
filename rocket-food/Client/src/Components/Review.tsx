@@ -16,6 +16,6 @@ const Review : React.FC<ReviewProps>=({ name, image,description,rating}) => {
             <Rating count={rating} size={20}/>
         </Col>
         </div>
-);
+    );
 };
  export default Review;

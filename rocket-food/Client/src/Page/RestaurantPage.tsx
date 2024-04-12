@@ -13,7 +13,7 @@ import axios from "axios";
 
 function RestaurantPage() {
     let navigate = useNavigate();
-    let { id } = useParams();
+    const id = localStorage.getItem("restaurantId")
 
     interface Restaurant {
         nameRestaurant: string;

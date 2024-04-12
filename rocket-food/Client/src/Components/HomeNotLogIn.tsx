@@ -135,7 +135,6 @@ import ManAvatar1 from "../Image/ManAvatar.jpg";
 import AstroBoba from "../Image/AstroBoba.jpg";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
-import signUp from "../Page/CreateAccount";
 import './HomeNotLogIn.css';
 import Review from '../Components/Review';
 //import Footer from '../Components/Footer';
@@ -155,13 +154,24 @@ function HomeNotLogIn() {
         if (reviewIndex > 0) {
             setReviewIndex(reviewIndex - 1)
         }
+        else {
+            setReviewIndex(reviewsData.length-1);
+        }
     }
 
     const moveToNext = () => {
         if (reviewIndex < reviewsData.length-1) {
             setReviewIndex(reviewIndex + 1)
         }
+        else {
+            setReviewIndex(0);
+        }
     }
+
+    const onClickGetStarted = () => {
+        navigate('/CreateAccount');
+    }
+
     return (
         <div className="Home">
             <header>
@@ -174,7 +184,7 @@ function HomeNotLogIn() {
                         Be The Fastest <br/>In Delivering<br/> Your <span id={"Title"}>Food</span>
                     </h1>
                     <Col className="review-container">
-                        <Button buttonText={"Get Started"} onClick={signUp}></Button>
+                        <Button buttonText={"Get Started"} onClick={onClickGetStarted}></Button>
                         <Col className={"review-container"}>
                             <img src={AstroBoba} alt= "AstroBoba" style={{width: "60px", height: "60px", borderRadius: "50%", padding: "5px"}}/>
                             <p className={"text-right"}>

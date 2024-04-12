@@ -26,7 +26,7 @@ function App() {
                 <Route path="/Privacy" element={<Privacy/>} />
                 <Route path="/RocketFood" element={<RocketFood/>}/>
                 <Route path="/Terms" element={<Terms/>} />
-                <Route path="/RestaurantPage/:id" element={<RestaurantPage/>} />
+                <Route path="/RestaurantPage/" element={<RestaurantPage/>} />
                 <Route path="/CreateRestaurant" element={<CreateRestaurant/>} />
                 <Route path="/Contact" element={<Contact/>} />
                 <Route path="/ServiceRestaurant" element={<ServiceRestaurant/>} />
