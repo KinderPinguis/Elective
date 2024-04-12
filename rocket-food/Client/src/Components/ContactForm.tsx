@@ -1,72 +1,97 @@
 import React, { useState } from 'react';
+import {Col, Row} from "antd";
 import './ContactForm.css';
-import {FormAllData} from '../CustomTypes';
+
+//const root = ReactDOM.createRoot(document.getElementById("root"));
 const ContactForm: React.FC = () => {
-    const [formAllData, setFormData] = useState({
+    const [formData, setFormData] = useState({
         name: '',
         email: '',
-        message: ''
+        message: '',
+        mobile: '',
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
-            ...formAllData,
-            [e.target.name]: e.target.value
+            ...formData,
+            [event.target.name]: event.target.value,
         });
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // Here you can perform actions like sending the form data to your server
-        console.log(formAllData);
-        // Reset the form fields after submission
-        setFormData({
-            name: '',
-            email: '',
-            message: ''
-        });
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        // Handle form submission logic here (e.g., send data to server)
+        console.log(formData);
+        // Reset form after submission (optional)
+        setFormData({ name: '', email: '', message: '' , mobile:''});
     };
 
     return (
-        <div className={"contact-container"}>
-            <h1>NEED ANY HELP, WE ARE HERE FOR YOU</h1>
-            <h2 className={"contact-heading"}>Contact Us</h2>
-            <form onSubmit={handleSubmit}>
-                <div className={"form-group"}>
-                    <label htmlFor="name" className={"form-label"}>Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formAllData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email" className={"form-label"}>Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formAllData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className={"form-group"}>
-                    <label htmlFor="message" className={"form-label"}>Message</label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        value={formAllData.message}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <>
+            <h1 className="contact-container">NEED ANY HELP, WE ARE HERE TO ASSIST YOU</h1>
+            <h2 className="text-center">Contact us</h2>
+            <div className="container d-flex justify-content-center">
+                <form onSubmit={handleSubmit}>
+
+                    <Row>
+                        <Col>
+                            <label>Name:</label>
+                            <input
+                                type="text"
+                                placeholder="Your name.."
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <label>Email:</label>
+                            <input
+                                type="text"
+                                placeholder="Your email.."
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <label>Mobile:</label>
+                            <input
+                                type="text"
+                                placeholder="Your mobile number.."
+                                name="mobile"
+                                value={formData.mobile || ''}
+                                onChange={handleChange}
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <label>Message:</label>
+                            <textarea
+                                rows={4}
+                                placeholder="Write something.."
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="text-center">
+                            <input type="submit" value="Submit" />
+                        </Col>
+                    </Row>
+                </form>
+            </div>
+        </>
     );
 };
 

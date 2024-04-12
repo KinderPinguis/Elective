@@ -1,4 +1,4 @@
-.contact-container h1{
+.contact-container{
     text-align: center;
     color: #f77272;
     font-size: 50px;
@@ -6,36 +6,39 @@
     position: relative;
     right: 50%;
 }
-.contact-container {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.contact-heading {
-    position: relative;
-    text-align: inherit;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-    border-radius: 50%;
-}
-
-.form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.form-input {
-    width: 200%;
-    padding: 0.5rem;
-}
-
-.submit-button {
-    background-color: #f77272;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
+.container {
     border-radius: 5px;
-    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.text-center{
+    position: absolute;
+    left: 40%;
+    text-align: center;
+}
+input[type="submit"] {
+    background-color: #eb5757;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+input[type="submit"]:hover {
+    background-color: #df7b07;
+}
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border-radius: 20px;
+}
+input {
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
